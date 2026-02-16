@@ -16,7 +16,8 @@ const projects = [
       "A web application that recommend career base on family occupation and academic background, it also showcase job market trends",
     image: careerlens,
     tech: ["Angular", "Node.js", "MySQL", "GCP"],
-    liveUrl: "https://careerlens-client-230445480118.asia-northeast1.run.app/homepage-page",
+    liveUrl:
+      "https://careerlens-client-230445480118.asia-northeast1.run.app/homepage-page",
     githubUrl: "#",
   },
   {
@@ -25,8 +26,6 @@ const projects = [
       "A software application that scan barcode based on student number when entering the premises of PSU library.",
     image: alsImages[Math.floor(Math.random() * alsImages.length)],
     tech: ["Neatbeans", "Java", "MySQL", "Xampp"],
-    liveUrl: "#",
-    githubUrl: "#",
   },
 ];
 
@@ -117,6 +116,7 @@ function ProjectCard({ project, index, isVisible }: ProjectCardProps) {
             >
               <ExternalLink size={20} />
             </motion.a>
+            {/*
             <motion.a
               href={project.githubUrl}
               whileHover={{ scale: 1.1 }}
@@ -124,7 +124,7 @@ function ProjectCard({ project, index, isVisible }: ProjectCardProps) {
               className="p-3 bg-[#A78BFA] text-[#0A0E27] rounded-lg hover:shadow-[0_0_20px_rgba(167,139,250,0.6)] transition-shadow duration-300"
             >
               <Github size={20} />
-            </motion.a>
+            </motion.a> */}
           </motion.div>
         </div>
 
@@ -236,7 +236,7 @@ export function ProjectsSection() {
           ))}
         </div>
 
-        {/* View More Button */}
+        {/* View More Button
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           animate={isVisible ? { opacity: 1, y: 0 } : {}}
@@ -256,7 +256,7 @@ export function ProjectsSection() {
             </span>
             <div className="absolute inset-0 shadow-[0_0_30px_rgba(0,217,255,0.6)] opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
           </motion.a>
-        </motion.div>
+        </motion.div> */}
       </div>
     </section>
   );

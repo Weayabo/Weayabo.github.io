@@ -5,28 +5,27 @@ const skillCategories = [
   {
     category: 'Frontend',
     skills: [
-      { name: 'React', level: 95 },
-      { name: 'Angular.js', level: 90 },
       { name: 'HTML/CSS', level: 98 },
+      { name: 'Angular.js', level: 95 },
       { name: 'JavaScript/TypeScript', level: 95 },
-      { name: 'Tailwind CSS', level: 92 },
+      { name: 'React', level: 70 },
+      { name: 'Tailwind CSS', level: 60 },
     ],
   },
   {
     category: 'Backend',
     skills: [
-      { name: 'Node.js', level: 88 },
-      { name: 'Express.js', level: 85 },
-      { name: 'PHP', level: 80 },
-      { name: 'Java', level: 75 },
       { name: 'REST APIs', level: 90 },
+      { name: 'Node.js', level: 80 },
+      { name: 'Express.js', level: 75 },
+      { name: 'PHP', level: 70 },
+      { name: 'Java', level: 65 },
     ],
   },
   {
     category: 'Database & Tools',
     skills: [
       { name: 'MySQL', level: 85 },
-      { name: 'MongoDB', level: 80 },
       { name: 'Git/GitHub', level: 92 },
       { name: 'VS Code', level: 95 },
       { name: 'Figma', level: 88 },
@@ -35,11 +34,10 @@ const skillCategories = [
   {
     category: 'DevOps & Cloud',
     skills: [
-      { name: 'Docker', level: 82 },
-      { name: 'Google Cloud Run', level: 78 },
-      { name: 'CI/CD', level: 80 },
-      { name: 'Google Cloud', level: 75 },
-      { name: 'MySQL Workbench', level: 85 },
+      { name: 'Docker', level: 80 },
+      { name: 'Google Cloud Run', level: 75 },
+      { name: 'CI/CD', level: 70 },
+      { name: 'Google Cloud', level: 60 },
     ],
   },
 ];
@@ -185,11 +183,11 @@ export function SkillsSection() {
           
           <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-8">
             {[
-              { name: 'React', percentage: 95, color: '#00D9FF' },
-              { name: 'Node.js', percentage: 88, color: '#A78BFA' },
-              { name: 'TypeScript', percentage: 90, color: '#00D9FF' },
-              { name: 'UI/UX', percentage: 92, color: '#A78BFA' },
-              { name: 'DevOps', percentage: 80, color: '#00D9FF' },
+              { name: 'Angular.js', percentage: 90, color: '#00D9FF' },
+              { name: 'Node.js', percentage: 80, color: '#A78BFA' },
+              { name: 'TypeScript', percentage: 80, color: '#00D9FF' },
+              { name: 'UI/UX', percentage: 75, color: '#A78BFA' },
+              { name: 'DevOps', percentage: 75, color: '#00D9FF' },
             ].map((skill, index) => (
               <motion.div
                 key={skill.name}

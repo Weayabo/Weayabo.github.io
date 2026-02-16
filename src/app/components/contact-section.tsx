@@ -1,15 +1,15 @@
-import { useState, useEffect, useRef } from 'react';
-import { motion } from 'motion/react';
-import { Mail, MapPin, Phone, Send } from 'lucide-react';
+import { useState, useEffect, useRef } from "react";
+import { motion } from "motion/react";
+import { Mail, MapPin, Phone, Send } from "lucide-react";
 
 export function ContactSection() {
   const [isVisible, setIsVisible] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [formData, setFormData] = useState({
-    name: '',
-    email: '',
-    subject: '',
-    message: '',
+    name: "",
+    email: "",
+    subject: "",
+    message: "",
   });
   const sectionRef = useRef<HTMLElement>(null);
 
@@ -20,7 +20,7 @@ export function ContactSection() {
           setIsVisible(true);
         }
       },
-      { threshold: 0.2 }
+      { threshold: 0.2 },
     );
 
     if (sectionRef.current) {
@@ -37,13 +37,13 @@ export function ContactSection() {
     // Simulate form submission
     await new Promise((resolve) => setTimeout(resolve, 2000));
 
-    console.log('Form submitted:', formData);
+    console.log("Form submitted:", formData);
     setIsSubmitting(false);
-    setFormData({ name: '', email: '', subject: '', message: '' });
+    setFormData({ name: "", email: "", subject: "", message: "" });
   };
 
   const handleChange = (
-    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>,
   ) => {
     setFormData((prev) => ({
       ...prev,
@@ -54,21 +54,21 @@ export function ContactSection() {
   const contactInfo = [
     {
       icon: Mail,
-      label: 'Email',
-      value: 'hello@johndeveloper.com',
-      href: 'mailto:hello@johndeveloper.com',
+      label: "Email",
+      value: "remuszamora@gmail.com",
+      href: "mailto:remuszamora@gmail.com",
     },
     {
       icon: Phone,
-      label: 'Phone',
-      value: '+1 (555) 123-4567',
-      href: 'tel:+15551234567',
+      label: "Phone",
+      value: "+63 969 142 4672",
+      href: "tel:+639691424672",
     },
     {
       icon: MapPin,
-      label: 'Location',
-      value: 'San Francisco, CA',
-      href: '#',
+      label: "Location",
+      value: "San Fernando. Pampanga, Philippines",
+      href: "https://maps.app.goo.gl/hz7pq2WP9gaGiahZ7",
     },
   ];
 
@@ -89,7 +89,7 @@ export function ContactSection() {
           scale: [1, 1.3, 1],
           opacity: [0.2, 0.4, 0.2],
         }}
-        transition={{ duration: 10, repeat: Infinity, ease: 'easeInOut' }}
+        transition={{ duration: 10, repeat: Infinity, ease: "easeInOut" }}
       />
 
       <div className="relative z-10 max-w-7xl mx-auto px-6 lg:px-8">
@@ -107,7 +107,8 @@ export function ContactSection() {
           </h2>
           <div className="h-1 w-24 bg-gradient-to-r from-[#00D9FF] to-[#A78BFA] mx-auto rounded-full" />
           <p className="mt-6 text-lg text-[#F5F5F5]/60 max-w-2xl mx-auto">
-            Have a project in mind? Let's work together to create something amazing
+            Have a project in mind? Let's work together to create something
+            amazing
           </p>
         </motion.div>
 
@@ -124,8 +125,9 @@ export function ContactSection() {
                 Let's Talk
               </h3>
               <p className="text-lg text-[#F5F5F5]/70 leading-relaxed mb-8">
-                I'm always interested in hearing about new projects and opportunities.
-                Whether you have a question or just want to say hi, feel free to reach out!
+                I'm always interested in hearing about new projects and
+                opportunities. Whether you have a question or just want to say
+                hi, feel free to reach out!
               </p>
             </div>
 
@@ -143,7 +145,9 @@ export function ContactSection() {
                     <info.icon className="text-[#00D9FF]" size={24} />
                   </div>
                   <div>
-                    <div className="text-sm text-[#F5F5F5]/60">{info.label}</div>
+                    <div className="text-sm text-[#F5F5F5]/60">
+                      {info.label}
+                    </div>
                     <div className="text-[#F5F5F5] group-hover:text-[#00D9FF] transition-colors duration-300">
                       {info.value}
                     </div>
@@ -159,18 +163,32 @@ export function ContactSection() {
               transition={{ delay: 0.7, duration: 0.6 }}
               className="pt-8"
             >
-              <p className="text-[#F5F5F5]/60 mb-4">Follow me on social media</p>
+              <p className="text-[#F5F5F5]/60 mb-4">
+                Follow me on social media
+              </p>
               <div className="flex gap-4">
-                {['GitHub', 'LinkedIn', 'Twitter', 'Dribbble'].map((social, index) => (
-                  <motion.a
-                    key={social}
-                    href="#"
-                    whileHover={{ scale: 1.1, y: -5 }}
-                    className="px-6 py-3 bg-gradient-to-br from-[#1A1F3A]/80 to-[#1A1F3A]/40 border border-[#00D9FF]/20 rounded-lg text-[#F5F5F5]/80 hover:text-[#00D9FF] hover:border-[#00D9FF]/50 transition-all duration-300"
-                  >
-                    {social}
-                  </motion.a>
-                ))}
+                {["GitHub", "LinkedIn", "Instagram", "Facebook"].map(
+                  (social, index) => (
+                    <motion.a
+                      key={social}
+                      href={
+                        social === "GitHub"
+                          ? "https://github.com/Weayabo"
+                          : social === "LinkedIn"
+                            ? "https://www.linkedin.com/in/remus-zamora-507768374/"
+                            : social === "Instagram"
+                              ? "https://www.instagram.com/re.myths/"
+                              : social === "Facebook"
+                                ? "https://www.facebook.com/remuszamora"
+                                : "#"
+                      }
+                      whileHover={{ scale: 1.1, y: -5 }}
+                      className="px-6 py-3 bg-gradient-to-br from-[#1A1F3A]/80 to-[#1A1F3A]/40 border border-[#00D9FF]/20 rounded-lg text-[#F5F5F5]/80 hover:text-[#00D9FF] hover:border-[#00D9FF]/50 transition-all duration-300"
+                    >
+                      {social}
+                    </motion.a>
+                  ),
+                )}
               </div>
             </motion.div>
           </motion.div>
@@ -248,7 +266,11 @@ export function ContactSection() {
                     <>
                       <motion.div
                         animate={{ rotate: 360 }}
-                        transition={{ duration: 1, repeat: Infinity, ease: 'linear' }}
+                        transition={{
+                          duration: 1,
+                          repeat: Infinity,
+                          ease: "linear",
+                        }}
                         className="w-5 h-5 border-2 border-[#0A0E27] border-t-transparent rounded-full"
                       />
                       Sending...

@@ -130,8 +130,8 @@ export function HeroSection() {
             transition={{ delay: 0.7, duration: 0.6 }}
           >
             {[
-              { icon: Github, href: "#", label: "GitHub" },
-              { icon: Linkedin, href: "#", label: "LinkedIn" },
+              { icon: Github, href: "https://github.com/Weayabo", label: "GitHub" },
+              { icon: Linkedin, href: "https://www.linkedin.com/in/remus-zamora-507768374/", label: "LinkedIn" },
               { icon: Mail, href: "#contact", label: "Email" },
             ].map((social, index) => (
               <motion.a

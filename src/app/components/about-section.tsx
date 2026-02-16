@@ -11,8 +11,8 @@ import {
 import logo from "@/assets/my-avatar.png";
 
 const techStack = [
-  { name: "React", icon: Code2, category: "Frontend" },
   { name: "Angular", icon: Code2, category: "Frontend" },
+  { name: "React", icon: Code2, category: "Frontend" },
   { name: "Node.js", icon: Server, category: "Backend" },
   { name: "Express.js", icon: Server, category: "Backend" },
   { name: "PHP", icon: Server, category: "Backend" },
@@ -166,9 +166,9 @@ export function AboutSection() {
             {/* Stats */}
             <div className="grid grid-cols-3 gap-4 pt-8">
               {[
-                { value: "5+", label: "Years Experience" },
-                { value: "50+", label: "Projects Completed" },
-                { value: "30+", label: "Happy Clients" },
+                { value: "1+", label: "Year Experience" },
+                { value: "2", label: "Projects Completed" },
+                { value: "100+", label: "Happy Clients" },
               ].map((stat, index) => (
                 <motion.div
                   key={stat.label}

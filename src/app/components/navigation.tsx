@@ -1,14 +1,13 @@
-import { useState, useEffect } from 'react';
-import { motion } from 'motion/react';
-import { Menu, X } from 'lucide-react';
+import { useState, useEffect } from "react";
+import { motion } from "motion/react";
+import { Menu, X } from "lucide-react";
 
 const navItems = [
-  { label: 'Home', href: '#home' },
-  { label: 'About', href: '#about' },
-  { label: 'Projects', href: '#projects' },
-  { label: 'Skills', href: '#skills' },
-  { label: 'Experience', href: '#experience' },
-  { label: 'Contact', href: '#contact' },
+  { label: "HOME", href: "#home" },
+  { label: "ABOUT", href: "#about" },
+  { label: "PROJECTS", href: "#projects" },
+  { label: "SKILLS", href: "#skills" },
+  { label: "CONTACT", href: "#contact" },
 ];
 
 export function Navigation() {
@@ -20,15 +19,18 @@ export function Navigation() {
       setIsScrolled(window.scrollY > 50);
     };
 
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  const handleNavClick = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
+  const handleNavClick = (
+    e: React.MouseEvent<HTMLAnchorElement>,
+    href: string,
+  ) => {
     e.preventDefault();
     const element = document.querySelector(href);
     if (element) {
-      element.scrollIntoView({ behavior: 'smooth' });
+      element.scrollIntoView({ behavior: "smooth" });
       setIsMobileMenuOpen(false);
     }
   };
@@ -41,8 +43,8 @@ export function Navigation() {
         transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
         className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
           isScrolled
-            ? 'bg-[#0A0E27]/80 backdrop-blur-md border-b border-[#00D9FF]/20 shadow-lg shadow-[#00D9FF]/5'
-            : 'bg-transparent'
+            ? "bg-[#0A0E27]/80 backdrop-blur-md border-b border-[#00D9FF]/20 shadow-lg shadow-[#00D9FF]/5"
+            : "bg-transparent"
         }`}
       >
         <div className="max-w-7xl mx-auto px-6 lg:px-8">
@@ -50,7 +52,7 @@ export function Navigation() {
             {/* Logo */}
             <motion.a
               href="#home"
-              onClick={(e) => handleNavClick(e, '#home')}
+              onClick={(e) => handleNavClick(e, "#home")}
               className="relative group"
               whileHover={{ scale: 1.05 }}
               transition={{ duration: 0.2 }}
@@ -84,7 +86,7 @@ export function Navigation() {
             {/* CTA Button - Desktop */}
             <motion.a
               href="#contact"
-              onClick={(e) => handleNavClick(e, '#contact')}
+              onClick={(e) => handleNavClick(e, "#contact")}
               className="hidden md:block relative px-6 py-2.5 rounded-lg overflow-hidden group"
               initial={{ opacity: 0, x: 20 }}
               animate={{ opacity: 1, x: 0 }}
@@ -93,7 +95,9 @@ export function Navigation() {
             >
               <div className="absolute inset-0 bg-gradient-to-r from-[#00D9FF] to-[#A78BFA]" />
               <div className="absolute inset-0 bg-gradient-to-r from-[#A78BFA] to-[#00D9FF] opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-              <span className="relative text-sm text-[#0A0E27] font-medium">Get In Touch</span>
+              <span className="relative text-sm text-[#0A0E27] font-medium">
+                Get In Touch
+              </span>
               <div className="absolute inset-0 shadow-[0_0_20px_rgba(0,217,255,0.4)] opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
             </motion.a>
 
@@ -111,9 +115,9 @@ export function Navigation() {
       {/* Mobile Menu */}
       {isMobileMenuOpen && (
         <motion.div
-          initial={{ opacity: 0, x: '100%' }}
+          initial={{ opacity: 0, x: "100%" }}
           animate={{ opacity: 1, x: 0 }}
-          exit={{ opacity: 0, x: '100%' }}
+          exit={{ opacity: 0, x: "100%" }}
           transition={{ duration: 0.3 }}
           className="fixed inset-y-0 right-0 z-40 w-full max-w-sm bg-[#1A1F3A]/95 backdrop-blur-md md:hidden border-l border-[#00D9FF]/20"
         >
@@ -133,7 +137,7 @@ export function Navigation() {
             ))}
             <motion.a
               href="#contact"
-              onClick={(e) => handleNavClick(e, '#contact')}
+              onClick={(e) => handleNavClick(e, "#contact")}
               className="mt-4 px-4 py-3 text-lg text-center bg-gradient-to-r from-[#00D9FF] to-[#A78BFA] text-[#0A0E27] font-medium rounded-lg"
               initial={{ opacity: 0, x: 50 }}
               animate={{ opacity: 1, x: 0 }}
