@@ -30,16 +30,35 @@ export function ContactSection() {
     return () => observer.disconnect();
   }, []);
 
+  const [statusMessage, setStatusMessage] = useState("");
+
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setIsSubmitting(true);
+    setStatusMessage("");
 
-    // Simulate form submission
-    await new Promise((resolve) => setTimeout(resolve, 2000));
+    try {
+      const res = await fetch("https://formspree.io/f/xnjbvqel", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(formData),
+      });
 
-    console.log("Form submitted:", formData);
-    setIsSubmitting(false);
-    setFormData({ name: "", email: "", subject: "", message: "" });
+      if (res.ok) {
+        setStatusMessage("Message sent successfully!");
+        setFormData({ name: "", email: "", subject: "", message: "" });
+      } else {
+        setStatusMessage("❌ Something went wrong, please try again.");
+        console.error(await res.text());
+      }
+    } catch (error) {
+      console.error(error);
+      setStatusMessage("❌ Failed to send message. Please try later.");
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   const handleChange = (
@@ -284,6 +303,9 @@ export function ContactSection() {
                 </span>
                 <div className="absolute inset-0 shadow-[0_0_30px_rgba(0,217,255,0.6)] opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
               </motion.button>
+              {statusMessage && (
+                <p className="text-sm text-[#00D9FF] mt-2">{statusMessage}</p>
+              )}
             </form>
           </motion.div>
         </div>
