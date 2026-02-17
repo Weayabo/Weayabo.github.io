@@ -50,12 +50,12 @@ export function ContactSection() {
         setStatusMessage("Message sent successfully!");
         setFormData({ name: "", email: "", subject: "", message: "" });
       } else {
-        setStatusMessage("❌ Something went wrong, please try again.");
+        setStatusMessage("Something went wrong, please try again.");
         console.error(await res.text());
       }
     } catch (error) {
       console.error(error);
-      setStatusMessage("❌ Failed to send message. Please try later.");
+      setStatusMessage("Failed to send message. Please try later.");
     } finally {
       setIsSubmitting(false);
     }
@@ -98,12 +98,12 @@ export function ContactSection() {
       className="relative py-24 md:py-32 overflow-hidden"
     >
       {/* Background */}
-      <div className="absolute inset-0 bg-gradient-to-b from-[#0A0E27] via-[#1A1F3A] to-[#0A0E27]" />
-      <div className="absolute top-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-[#00D9FF]/50 to-transparent" />
+      <div className="absolute inset-0 bg-gradient-to-b from-background via-background/50 to-background" />
+      <div className="absolute top-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-primary/50 to-transparent" />
 
       {/* Animated Background Elements */}
       <motion.div
-        className="absolute top-1/3 left-1/3 w-96 h-96 bg-[#A78BFA]/5 rounded-full blur-3xl"
+        className="absolute top-1/3 left-1/3 w-96 h-96 bg-accent/5 rounded-full blur-3xl"
         animate={{
           scale: [1, 1.3, 1],
           opacity: [0.2, 0.4, 0.2],
@@ -120,12 +120,12 @@ export function ContactSection() {
           className="mb-16 text-center"
         >
           <h2 className="text-4xl md:text-5xl mb-4 inline-block">
-            <span className="bg-gradient-to-r from-[#00D9FF] to-[#A78BFA] bg-clip-text text-transparent">
+            <span className="bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">
               Get In Touch
             </span>
           </h2>
-          <div className="h-1 w-24 bg-gradient-to-r from-[#00D9FF] to-[#A78BFA] mx-auto rounded-full" />
-          <p className="mt-6 text-lg text-[#F5F5F5]/60 max-w-2xl mx-auto">
+          <div className="h-1 w-24 bg-gradient-to-r from-primary to-accent mx-auto rounded-full" />
+          <p className="mt-6 text-lg text-foreground/100 max-w-2xl mx-auto">
             Have a project in mind? Let's work together to create something
             amazing
           </p>
@@ -140,10 +140,10 @@ export function ContactSection() {
             className="space-y-8"
           >
             <div>
-              <h3 className="text-2xl md:text-3xl text-[#F5F5F5] mb-6">
+              <h3 className="text-2xl md:text-3xl text-foreground mb-6">
                 Let's Talk
               </h3>
-              <p className="text-lg text-[#F5F5F5]/70 leading-relaxed mb-8">
+              <p className="text-lg text-foreground/100 leading-relaxed mb-8">
                 I'm always interested in hearing about new projects and
                 opportunities. Whether you have a question or just want to say
                 hi, feel free to reach out!
@@ -158,16 +158,16 @@ export function ContactSection() {
                   initial={{ opacity: 0, x: -30 }}
                   animate={isVisible ? { opacity: 1, x: 0 } : {}}
                   transition={{ delay: 0.3 + index * 0.1, duration: 0.4 }}
-                  className="flex items-center gap-4 p-4 rounded-xl bg-[#1A1F3A]/50 border border-[#00D9FF]/10 hover:border-[#00D9FF]/30 hover:bg-[#1A1F3A]/80 transition-all duration-300 group"
+                  className="flex items-center gap-4 p-4 rounded-xl bg-background/50 border border-primary/50 hover:border-primary/30 hover:bg-primary/10 transition-all duration-300 group"
                 >
-                  <div className="p-3 bg-gradient-to-br from-[#00D9FF]/20 to-[#A78BFA]/20 rounded-lg group-hover:from-[#00D9FF]/30 group-hover:to-[#A78BFA]/30 transition-all duration-300">
-                    <info.icon className="text-[#00D9FF]" size={24} />
+                  <div className="p-3 bg-gradient-to-br from-primary/20 to-accent/20 rounded-lg group-hover:from-primary/30 group-hover:to-accent/30 transition-all duration-300">
+                    <info.icon className="text-foreground" size={24} />
                   </div>
                   <div>
-                    <div className="text-sm text-[#F5F5F5]/60">
+                    <div className="text-sm text-foreground/60 group-hover:text-primary transition-colors duration-300">
                       {info.label}
                     </div>
-                    <div className="text-[#F5F5F5] group-hover:text-[#00D9FF] transition-colors duration-300">
+                    <div className="text-foreground group-hover:text-primary transition-colors duration-300">
                       {info.value}
                     </div>
                   </div>
@@ -182,10 +182,10 @@ export function ContactSection() {
               transition={{ delay: 0.7, duration: 0.6 }}
               className="pt-8"
             >
-              <p className="text-[#F5F5F5]/60 mb-4">
+              <p className="text-foreground/60 mb-4">
                 Follow me on social media
               </p>
-              <div className="flex gap-4">
+              <div className="flex gap-4 flex-wrap">
                 {["GitHub", "LinkedIn", "Instagram", "Facebook"].map(
                   (social, index) => (
                     <motion.a
@@ -202,7 +202,7 @@ export function ContactSection() {
                                 : "#"
                       }
                       whileHover={{ scale: 1.1, y: -5 }}
-                      className="px-6 py-3 bg-gradient-to-br from-[#1A1F3A]/80 to-[#1A1F3A]/40 border border-[#00D9FF]/20 rounded-lg text-[#F5F5F5]/80 hover:text-[#00D9FF] hover:border-[#00D9FF]/50 transition-all duration-300"
+                      className="px-6 py-3 bg-gradient-to-br from-background/80 to-background/40 border border-primary/50 rounded-lg text-foreground/80 hover:text-primary hover:border-primary/50 transition-all duration-300"
                     >
                       {social}
                     </motion.a>
@@ -227,9 +227,9 @@ export function ContactSection() {
                   onChange={handleChange}
                   required
                   placeholder="Your Name"
-                  className="w-full px-6 py-4 bg-[#1A1F3A]/50 border border-[#00D9FF]/10 rounded-xl text-[#F5F5F5] placeholder-[#F5F5F5]/40 focus:outline-none focus:border-[#00D9FF]/50 focus:bg-[#1A1F3A]/80 transition-all duration-300"
+                  className="w-full px-6 py-4 bg-background/50 border border-primary/10 rounded-xl text-foreground placeholder-foreground/40 focus:outline-none focus:border-primary/50 focus:bg-background/20 transition-all duration-300"
                 />
-                <div className="absolute inset-0 bg-gradient-to-r from-[#00D9FF]/5 to-[#A78BFA]/5 rounded-xl opacity-0 group-focus-within:opacity-100 transition-opacity duration-300 -z-10" />
+                <div className="absolute inset-0 bg-gradient-to-r from-primary/5 to-accent/5 rounded-xl opacity-0 group-focus-within:opacity-100 transition-opacity duration-300 -z-10" />
               </div>
 
               <div className="relative group">
@@ -240,9 +240,9 @@ export function ContactSection() {
                   onChange={handleChange}
                   required
                   placeholder="Your Email"
-                  className="w-full px-6 py-4 bg-[#1A1F3A]/50 border border-[#00D9FF]/10 rounded-xl text-[#F5F5F5] placeholder-[#F5F5F5]/40 focus:outline-none focus:border-[#00D9FF]/50 focus:bg-[#1A1F3A]/80 transition-all duration-300"
+                  className="w-full px-6 py-4 bg-background/50 border border-primary/10 rounded-xl text-foreground placeholder-foreground/40 focus:outline-none focus:border-primary/50 focus:bg-background/20 transition-all duration-300"
                 />
-                <div className="absolute inset-0 bg-gradient-to-r from-[#00D9FF]/5 to-[#A78BFA]/5 rounded-xl opacity-0 group-focus-within:opacity-100 transition-opacity duration-300 -z-10" />
+                <div className="absolute inset-0 bg-gradient-to-r from-primary/5 to-accent/5 rounded-xl opacity-0 group-focus-within:opacity-100 transition-opacity duration-300 -z-10" />
               </div>
 
               <div className="relative group">
@@ -253,9 +253,9 @@ export function ContactSection() {
                   onChange={handleChange}
                   required
                   placeholder="Subject"
-                  className="w-full px-6 py-4 bg-[#1A1F3A]/50 border border-[#00D9FF]/10 rounded-xl text-[#F5F5F5] placeholder-[#F5F5F5]/40 focus:outline-none focus:border-[#00D9FF]/50 focus:bg-[#1A1F3A]/80 transition-all duration-300"
+                  className="w-full px-6 py-4 bg-background/50 border border-primary/10 rounded-xl text-foreground placeholder-foreground/40 focus:outline-none focus:border-primary/50 focus:bg-background/20 transition-all duration-300"
                 />
-                <div className="absolute inset-0 bg-gradient-to-r from-[#00D9FF]/5 to-[#A78BFA]/5 rounded-xl opacity-0 group-focus-within:opacity-100 transition-opacity duration-300 -z-10" />
+                <div className="absolute inset-0 bg-gradient-to-r from-primary/5 to-accent/5 rounded-xl opacity-0 group-focus-within:opacity-100 transition-opacity duration-300 -z-10" />
               </div>
 
               <div className="relative group">
@@ -266,9 +266,9 @@ export function ContactSection() {
                   required
                   placeholder="Your Message"
                   rows={6}
-                  className="w-full px-6 py-4 bg-[#1A1F3A]/50 border border-[#00D9FF]/10 rounded-xl text-[#F5F5F5] placeholder-[#F5F5F5]/40 focus:outline-none focus:border-[#00D9FF]/50 focus:bg-[#1A1F3A]/80 transition-all duration-300 resize-none"
+                  className="w-full px-6 py-4 bg-background/50 border border-primary/10 rounded-xl text-foreground placeholder-foreground/40 focus:outline-none focus:border-primary/50 focus:bg-background/20 transition-all duration-300 resize-none"
                 />
-                <div className="absolute inset-0 bg-gradient-to-r from-[#00D9FF]/5 to-[#A78BFA]/5 rounded-xl opacity-0 group-focus-within:opacity-100 transition-opacity duration-300 -z-10" />
+                <div className="absolute inset-0 bg-gradient-to-r from-primary/5 to-accent/5 rounded-xl opacity-0 group-focus-within:opacity-100 transition-opacity duration-300 -z-10" />
               </div>
 
               <motion.button
@@ -278,9 +278,9 @@ export function ContactSection() {
                 whileHover={!isSubmitting ? { scale: 1.02 } : {}}
                 whileTap={!isSubmitting ? { scale: 0.98 } : {}}
               >
-                <div className="absolute inset-0 bg-gradient-to-r from-[#00D9FF] to-[#A78BFA]" />
-                <div className="absolute inset-0 bg-gradient-to-r from-[#A78BFA] to-[#00D9FF] opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-                <span className="relative text-[#0A0E27] font-medium flex items-center justify-center gap-2">
+                <div className="absolute inset-0 bg-gradient-to-r from-primary to-accent" />
+                <div className="absolute inset-0 bg-gradient-to-r from-accent to-primary opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                <span className="relative text-foreground font-medium flex items-center justify-center gap-2">
                   {isSubmitting ? (
                     <>
                       <motion.div

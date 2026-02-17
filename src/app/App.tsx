@@ -8,7 +8,7 @@ import { Footer } from '@/app/components/footer';
 
 export default function App() {
   return (
-    <div className="relative min-h-screen bg-[#0A0E27] overflow-x-hidden">
+    <div className="relative min-h-screen bg-background overflow-x-hidden">
       {/* Navigation */}
       <Navigation />
 
