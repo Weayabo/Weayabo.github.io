@@ -1,6 +1,7 @@
 import { motion } from "motion/react";
 import { ArrowDown, Github, Linkedin, Mail } from "lucide-react";
 import { ParticleBackground } from "./particle-background";
+import Resume from "@/assets/pdf_CV/Remus_Kinilitan_CV.pdf";
 
 export function HeroSection() {
   const handleScrollToAbout = () => {
@@ -112,12 +113,14 @@ export function HeroSection() {
             </motion.a>
 
             <motion.a
-              href="#projects"
+              href={Resume}
+              target="_blank"
+              rel="noopener noreferrer"
               className="relative px-8 py-4 rounded-lg border-2 border-[#00D9FF]/50 text-[#00D9FF] hover:bg-[#00D9FF]/10 transition-all duration-300 group w-full sm:w-auto"
               whileHover={{ scale: 1.05, borderColor: "rgba(0, 217, 255, 1)" }}
               whileTap={{ scale: 0.95 }}
             >
-              <span className="relative font-medium">View My Work</span>
+              <span className="relative font-medium">View Resume</span>
               <div className="absolute inset-0 shadow-[0_0_20px_rgba(0,217,255,0.3)] opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-lg" />
             </motion.a>
           </motion.div>
@@ -130,8 +133,16 @@ export function HeroSection() {
             transition={{ delay: 0.7, duration: 0.6 }}
           >
             {[
-              { icon: Github, href: "https://github.com/Weayabo", label: "GitHub" },
-              { icon: Linkedin, href: "https://www.linkedin.com/in/remus-zamora-507768374/", label: "LinkedIn" },
+              {
+                icon: Github,
+                href: "https://github.com/Weayabo",
+                label: "GitHub",
+              },
+              {
+                icon: Linkedin,
+                href: "https://www.linkedin.com/in/remus-zamora-507768374/",
+                label: "LinkedIn",
+              },
               { icon: Mail, href: "#contact", label: "Email" },
             ].map((social, index) => (
               <motion.a
