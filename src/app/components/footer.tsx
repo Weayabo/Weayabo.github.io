@@ -44,9 +44,9 @@ export function Footer() {
   };
 
   return (
-    <footer className="relative bg-[#0A0E27] border-t border-[#00D9FF]/10">
+    <footer className="relative bg-background border-t border-primary/10">
       {/* Top Gradient Line */}
-      <div className="absolute top-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-[#00D9FF]/50 to-transparent" />
+      <div className="absolute top-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-primary/50 to-transparent" />
 
       <div className="max-w-7xl mx-auto px-6 lg:px-8 py-16">
         {/* Main Footer Content */}
@@ -61,10 +61,10 @@ export function Footer() {
             >
               <div className="mb-4">
                 <span className="text-2xl font-['Space_Grotesk'] tracking-tight">
-                  <span className="text-[#00D9FF]">REMUS</span>
+                  <span className="text-primary">REMUS</span>
                 </span>
               </div>
-              <p className="text-[#F5F5F5]/60 mb-6 leading-relaxed">
+              <p className="text-foreground/60 mb-6 leading-relaxed">
                 Crafting exceptional digital experiences with modern web
                 technologies.
               </p>
@@ -85,7 +85,7 @@ export function Footer() {
                                 : "#"
                       }
                       whileHover={{ scale: 1.1, y: -2 }}
-                      className="w-10 h-10 flex items-center justify-center bg-[#1A1F3A]/50 border border-[#00D9FF]/20 rounded-lg text-[#F5F5F5]/60 hover:text-[#00D9FF] hover:border-[#00D9FF]/50 hover:bg-[#1A1F3A]/80 transition-all duration-300"
+                      className="w-10 h-10 flex items-center justify-center bg-background/50 border border-primary/20 rounded-lg text-foreground/60 hover:text-primary hover:border-primary/50 hover:bg-background/80 transition-all duration-300"
                     >
                       {social === "GitHub" && <Github size={16} />}
                       {social === "LinkedIn" && <Linkedin size={16} />}
@@ -108,7 +108,7 @@ export function Footer() {
                 viewport={{ once: true }}
                 transition={{ delay: categoryIndex * 0.1, duration: 0.6 }}
               >
-                <h4 className="text-[#F5F5F5] mb-4">{category}</h4>
+                <h4 className="text-foreground/80 mb-4">{category}</h4>
                 <ul className="space-y-3">
                   {links.map((link, linkIndex) => (
                     <motion.li
@@ -123,11 +123,11 @@ export function Footer() {
                     >
                       <a
                         href={link.href}
-                        className="text-[#F5F5F5]/60 hover:text-[#00D9FF] transition-colors duration-300 inline-block group"
+                        className="text-foreground/60 hover:text-primary transition-colors duration-300 inline-block group"
                       >
                         <span className="relative">
                           {link.label}
-                          <span className="absolute bottom-0 left-0 w-0 h-px bg-[#00D9FF] group-hover:w-full transition-all duration-300" />
+                          <span className="absolute bottom-0 left-0 w-0 h-px bg-primary group-hover:w-full transition-all duration-300" />
                         </span>
                       </a>
                     </motion.li>
@@ -139,7 +139,7 @@ export function Footer() {
         </div>
 
         {/* Divider */}
-        <div className="h-px bg-gradient-to-r from-transparent via-[#00D9FF]/20 to-transparent mb-8" />
+        <div className="h-px bg-gradient-to-r from-transparent via-primary/20 to-transparent mb-8" />
 
         {/* Bottom Bar */}
         <div className="flex flex-col md:flex-row items-center justify-center gap-4">
@@ -147,7 +147,7 @@ export function Footer() {
             initial={{ opacity: 0 }}
             whileInView={{ opacity: 1 }}
             viewport={{ once: true }}
-            className="text-[#F5F5F5]/60 text-sm flex items-center gap-2"
+            className="text-foreground/60 text-sm flex items-center gap-2"
           >
             © {currentYear} Remus. Made with{" "}
             <motion.span
@@ -156,7 +156,7 @@ export function Footer() {
               }}
               transition={{ duration: 1, repeat: Infinity, ease: "easeInOut" }}
             >
-              <Heart size={16} className="text-[#00D9FF] fill-[#00D9FF]" />
+              <Heart size={16} className="text-primary fill-primary" />
             </motion.span>
             and lots of coffee
           </motion.p>
@@ -165,17 +165,17 @@ export function Footer() {
             initial={{ opacity: 0 }}
             whileInView={{ opacity: 1 }}
             viewport={{ once: true }}
-            className="flex items-center gap-6 text-sm text-[#F5F5F5]/60"
+            className="flex items-center gap-6 text-sm text-foreground/60"
           >
             {/* <a
               href="#"
-              className="hover:text-[#00D9FF] transition-colors duration-300"
+              className="hover:text-primary transition-colors duration-300"
             >
               Privacy Policy
             </a>
             <a
               href="#"
-              className="hover:text-[#00D9FF] transition-colors duration-300"
+              className="hover:text-primary transition-colors duration-300"
             >
               Terms of Service
             </a> */}
@@ -190,7 +190,7 @@ export function Footer() {
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
         whileHover={{ scale: 1.1, y: -5 }}
-        className="fixed bottom-8 right-8 p-4 bg-gradient-to-r from-[#00D9FF] to-[#A78BFA] rounded-full text-[#0A0E27] shadow-lg hover:shadow-[0_0_30px_rgba(0,217,255,0.6)] transition-all duration-300 z-50"
+        className="fixed bottom-8 right-8 p-4 bg-gradient-to-r from-primary to-accent rounded-full text-foreground shadow-lg hover:shadow-[0_0_30px_rgba(0,217,255,0.6)] transition-all duration-300 z-50"
       >
         <ArrowUp size={24} />
       </motion.button>
