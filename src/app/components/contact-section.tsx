@@ -103,7 +103,7 @@ export function ContactSection() {
 
       {/* Animated Background Elements */}
       <motion.div
-        className="absolute top-1/3 left-1/3 w-96 h-96 bg-accent/5 rounded-full blur-3xl"
+        className="absolute top-1/3 left-1/3 w-96 h-96 from-primary to-accent rounded-full blur-3xl"
         animate={{
           scale: [1, 1.3, 1],
           opacity: [0.2, 0.4, 0.2],

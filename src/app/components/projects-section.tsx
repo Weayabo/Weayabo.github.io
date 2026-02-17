@@ -193,11 +193,11 @@ export function ProjectsSection() {
     >
       {/* Background */}
       <div className="absolute inset-0 bg-background" />
-      <div className="absolute top-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-background/50 to-transparent" />
+      <div className="absolute top-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-primary/50 to-transparent" />
 
       {/* Animated Background Elements */}
       <motion.div
-        className="absolute top-1/4 right-1/4 w-96 h-96 bg-gradient-to-r from-primary/5 to-accent/5 rounded-full blur-3xl"
+        className="absolute top-1/4 right-1/4 w-96 h-96 bg-gradient-to-r from-primary to-accent rounded-full blur-3xl"
         animate={{
           scale: [1, 1.2, 1],
           opacity: [0.3, 0.5, 0.3],
