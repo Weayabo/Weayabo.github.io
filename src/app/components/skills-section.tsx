@@ -75,7 +75,7 @@ export function SkillsSection() {
 
       {/* Animated Background Shapes */}
       <motion.div
-        className="absolute top-20 right-20 w-64 h-64 bg-gradient-to-r from-primary/5 to-accent/5 rounded-full blur-3xl"
+        className="absolute top-20 right-20 w-64 h-64 bg-gradient-to-r from-primary to-accent rounded-full blur-3xl"
         animate={{
           scale: [1, 1.2, 1],
           opacity: [0.3, 0.5, 0.3],
