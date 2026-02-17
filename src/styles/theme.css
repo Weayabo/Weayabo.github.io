@@ -2,40 +2,16 @@
 
 :root {
   --font-size: 16px;
-  
+
   /* Cyberpunk Color Palette */
-  --deep-black: #0A0E27;
-  --rich-charcoal: #1A1F3A;
-  --tech-blue-dark: #2D3E8F;
-  --tech-blue-light: #4A5FD9;
-  --bright-cyan: #00D9FF;
-  --electric-purple: #A78BFA;
-  --soft-white: #F5F5F5;
-  
-  /* Theme Colors */
-  --background: var(--deep-black);
-  --foreground: var(--soft-white);
-  --card: var(--rich-charcoal);
-  --card-foreground: var(--soft-white);
-  --popover: var(--rich-charcoal);
-  --popover-foreground: var(--soft-white);
-  --primary: var(--bright-cyan);
-  --primary-foreground: var(--deep-black);
-  --secondary: var(--tech-blue-light);
-  --secondary-foreground: var(--soft-white);
-  --muted: rgba(255, 255, 255, 0.1);
-  --muted-foreground: rgba(245, 245, 245, 0.7);
-  --accent: var(--electric-purple);
-  --accent-foreground: var(--soft-white);
-  --destructive: #d4183d;
-  --destructive-foreground: #ffffff;
-  --border: rgba(0, 217, 255, 0.2);
-  --input: rgba(255, 255, 255, 0.05);
-  --input-background: rgba(255, 255, 255, 0.05);
-  --switch-background: #cbced4;
-  --font-weight-medium: 500;
-  --font-weight-normal: 400;
-  --ring: var(--bright-cyan);
+  --deep-black: #0a0e27;
+  --rich-charcoal: #1a1f3a;
+  --tech-blue-dark: #2d3e8f;
+  --tech-blue-light: #4a5fd9;
+  --bright-cyan: #00d9ff;
+  --electric-purple: #a78bfa;
+  --soft-white: #f5f5f5;
+
   --chart-1: oklch(0.646 0.222 41.116);
   --chart-2: oklch(0.6 0.118 184.704);
   --chart-3: oklch(0.398 0.07 227.392);
@@ -50,6 +26,34 @@
   --sidebar-accent-foreground: oklch(0.205 0 0);
   --sidebar-border: oklch(0.922 0 0);
   --sidebar-ring: oklch(0.708 0 0);
+
+  /* Light Theme Palette */
+  --light-bg: #f8fafc;
+  --light-card: #ffffff;
+  --light-text: #0f172a;
+  --light-muted: rgba(15, 23, 42, 0.1);
+  --light-border: rgba(15, 23, 42, 0.15);
+
+  /* Theme Colors */
+  --background: var(--light-bg);
+  --foreground: var(--light-text);
+  --card: var(--light-card);
+  --card-foreground: var(--light-text);
+  --popover: var(--light-card);
+  --popover-foreground: var(--light-text);
+  --primary: #2563eb;
+  --primary-foreground: #ffffff;
+  --secondary: #6366f1;
+  --secondary-foreground: #ffffff;
+  --muted: var(--light-muted);
+  --muted-foreground: rgba(15, 23, 42, 0.7);
+  --accent: #7c3aed;
+  --accent-foreground: #ffffff;
+  --destructive: #dc2626;
+  --destructive-foreground: #ffffff;
+  --border: var(--light-border);
+  --input: rgba(15, 23, 42, 0.05);
+  --ring: #2563eb;
 }
 
 .dark {
@@ -137,7 +141,12 @@
 
   body {
     @apply bg-background text-foreground;
-    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    font-family:
+      "Inter",
+      -apple-system,
+      BlinkMacSystemFont,
+      "Segoe UI",
+      sans-serif;
   }
 
   /**
@@ -149,8 +158,10 @@
     font-size: var(--font-size);
   }
 
-  h1, h2, h3 {
-    font-family: 'Poppins', sans-serif;
+  h1,
+  h2,
+  h3 {
+    font-family: "Poppins", sans-serif;
   }
 
   h1 {

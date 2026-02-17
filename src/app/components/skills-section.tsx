@@ -70,12 +70,12 @@ export function SkillsSection() {
       className="relative py-24 md:py-32 overflow-hidden"
     >
       {/* Background */}
-      <div className="absolute inset-0 bg-[#0A0E27]" />
-      <div className="absolute top-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-[#A78BFA]/50 to-transparent" />
+      <div className="absolute inset-0 bg-background" />
+      <div className="absolute top-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-primary/50 to-transparent" />
 
       {/* Animated Background Shapes */}
       <motion.div
-        className="absolute top-20 right-20 w-64 h-64 bg-[#00D9FF]/5 rounded-full blur-3xl"
+        className="absolute top-20 right-20 w-64 h-64 bg-gradient-to-r from-primary/5 to-accent/5 rounded-full blur-3xl"
         animate={{
           scale: [1, 1.2, 1],
           opacity: [0.3, 0.5, 0.3],
@@ -92,12 +92,12 @@ export function SkillsSection() {
           className="mb-16 text-center"
         >
           <h2 className="text-4xl md:text-5xl mb-4 inline-block">
-            <span className="bg-gradient-to-r from-[#A78BFA] to-[#00D9FF] bg-clip-text text-transparent">
+            <span className="bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">
               Skills & Expertise
             </span>
           </h2>
-          <div className="h-1 w-24 bg-gradient-to-r from-[#A78BFA] to-[#00D9FF] mx-auto rounded-full" />
-          <p className="mt-6 text-lg text-[#F5F5F5]/60 max-w-2xl mx-auto">
+          <div className="h-1 w-24 bg-gradient-to-r from-primary to-accent mx-auto rounded-full" />
+          <p className="mt-6 text-lg text-foreground/100 max-w-2xl mx-auto">
             A comprehensive toolkit of modern technologies and frameworks
           </p>
         </motion.div>
@@ -112,12 +112,12 @@ export function SkillsSection() {
               transition={{ delay: categoryIndex * 0.15, duration: 0.6 }}
               className="relative group"
             >
-              <div className="relative p-8 rounded-2xl bg-gradient-to-br from-[#1A1F3A]/80 to-[#1A1F3A]/40 backdrop-blur-sm border border-[#00D9FF]/10 hover:border-[#00D9FF]/30 transition-all duration-300">
+              <div className="relative p-8 rounded-2xl bg-gradient-to-br from-primary/80 to-accent/40 backdrop-blur-sm border border-primary/10 hover:border-primary/30 transition-all duration-300">
                 {/* Glassmorphism Effect */}
-                <div className="absolute inset-0 bg-gradient-to-br from-[#00D9FF]/5 to-[#A78BFA]/5 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                <div className="absolute inset-0 bg-gradient-to-br from-primary/5 to-accent/5 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
                 
                 {/* Category Title */}
-                <h3 className="text-xl md:text-2xl mb-6 text-[#00D9FF] relative">
+                <h3 className="text-xl md:text-2xl mb-6 text-foreground relative">
                   {category.category}
                 </h3>
 
@@ -126,14 +126,14 @@ export function SkillsSection() {
                   {category.skills.map((skill, skillIndex) => (
                     <div key={skill.name}>
                       <div className="flex justify-between mb-2">
-                        <span className="text-sm md:text-base text-[#F5F5F5]/80">
+                        <span className="text-sm md:text-base text-foreground/80">
                           {skill.name}
                         </span>
-                        <span className="text-sm text-[#00D9FF]">{skill.level}%</span>
+                        <span className="text-sm text-accent">{skill.level}%</span>
                       </div>
                       
                       {/* Progress Bar Background */}
-                      <div className="h-2 bg-[#0A0E27]/50 rounded-full overflow-hidden">
+                      <div className="h-2 bg-foreground/20 rounded-full overflow-hidden">
                         {/* Progress Bar Fill */}
                         <motion.div
                           initial={{ width: 0 }}
@@ -143,7 +143,7 @@ export function SkillsSection() {
                             duration: 1,
                             ease: [0.16, 1, 0.3, 1],
                           }}
-                          className="h-full bg-gradient-to-r from-[#00D9FF] to-[#A78BFA] rounded-full relative overflow-hidden"
+                          className="h-full bg-gradient-to-r from-primary to-accent rounded-full relative overflow-hidden"
                         >
                           {/* Shimmer Effect */}
                           <motion.div
@@ -164,7 +164,7 @@ export function SkillsSection() {
                 </div>
 
                 {/* Glow Effect */}
-                <div className="absolute -inset-0.5 bg-gradient-to-r from-[#00D9FF]/0 to-[#A78BFA]/0 group-hover:from-[#00D9FF]/20 group-hover:to-[#A78BFA]/20 rounded-2xl blur opacity-0 group-hover:opacity-100 transition-opacity duration-300 -z-10" />
+                <div className="absolute -inset-0.5 bg-gradient-to-r from-primary/0 to-accent/0 group-hover:from-primary/20 group-hover:to-accent/20 rounded-2xl blur opacity-0 group-hover:opacity-100 transition-opacity duration-300 -z-10" />
               </div>
             </motion.div>
           ))}
@@ -204,7 +204,7 @@ export function SkillsSection() {
                       cx="48"
                       cy="48"
                       r="40"
-                      stroke="rgba(255, 255, 255, 0.1)"
+                      stroke="rgba(117, 117, 117, 0.53)"
                       strokeWidth="8"
                       fill="none"
                     />
@@ -234,14 +234,14 @@ export function SkillsSection() {
                   </svg>
                   {/* Percentage Text */}
                   <div className="absolute inset-0 flex items-center justify-center">
-                    <span className="text-lg text-[#F5F5F5] group-hover:text-[#00D9FF] transition-colors duration-300">
+                    <span className="text-lg text-foreground group-hover:text-primary transition-colors duration-300">
                       {skill.percentage}%
                     </span>
                   </div>
                 </div>
                 
                 {/* Skill Name */}
-                <span className="text-sm text-[#F5F5F5]/80 group-hover:text-[#F5F5F5] transition-colors duration-300">
+                <span className="text-sm text-foreground/80 group-hover:text-foreground transition-colors duration-300">
                   {skill.name}
                 </span>
               </motion.div>
