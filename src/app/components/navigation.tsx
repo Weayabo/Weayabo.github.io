@@ -92,7 +92,7 @@ export function Navigation() {
 
             <div className="hidden md:flex items-center gap-1">
               <motion.button
-                className="block w-10 h-10 mx-1 bg-gradient-to-r from-accent to-primary rounded-lg justify-center items-center hidden md:flex object-left-bottom"
+                className="block w-10 h-10 mx-1 bg-gradient-to-r from-accent to-primary rounded-lg justify-center items-center hidden md:flex object-left-bottom cursor-pointer"
                 whileHover={{ backgroundColor: "#00D9FF" }}
                 onClick={toggleTheme}
               >
@@ -153,7 +153,7 @@ export function Navigation() {
             ))}
 
             <motion.button
-              className="px-2 w-10 h-10 bg-accent rounded-lg justify-center items-center md:flex"
+              className="px-2 w-10 h-10 bg-accent rounded-lg justify-center items-center md:flex cursor-pointer"
               whileHover={{ backgroundColor: "#00D9FF" }}
               onClick={toggleTheme}
             >
