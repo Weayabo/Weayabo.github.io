@@ -9,11 +9,8 @@ import { TriCursor } from "@/app/components/cursor";
 
 export default function App() {
   return (
-    <div className="relative min-h-screen bg-background overflow-x-hidden cursor-none">
-      {/* Navigation */}
+    <div className="relative min-h-screen bg-background overflow-x-hidden md:cursor-none">
       <Navigation />
-
-      {/* Main Content */}
       <main>
         <HeroSection />
         <AboutSection />
@@ -21,16 +18,16 @@ export default function App() {
         <SkillsSection />
         <ContactSection />
       </main>
-
-      {/* Footer */}
       <Footer />
-
-      {/* Global Decorative Elements */}
       <div className="fixed inset-0 pointer-events-none overflow-hidden z-0">
         <div className="absolute top-0 left-0 w-full h-full bg-[radial-gradient(circle_at_50%_50%,rgba(0,217,255,0.03),transparent_50%)]" />
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-[radial-gradient(circle,rgba(167,139,250,0.05),transparent_70%)]" />
       </div>
-      <TriCursor />
+
+      {/* Only render custom cursor on desktop */}
+      <div className="hidden md:block">
+        <TriCursor />
+      </div>
     </div>
   );
 }
