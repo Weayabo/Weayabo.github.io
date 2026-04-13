@@ -149,16 +149,7 @@ export function Footer() {
             viewport={{ once: true }}
             className="text-foreground/60 text-sm flex items-center gap-2"
           >
-            © {currentYear} Remus. Made with{" "}
-            <motion.span
-              animate={{
-                scale: [1, 1.2, 1],
-              }}
-              transition={{ duration: 1, repeat: Infinity, ease: "easeInOut" }}
-            >
-              <Heart size={16} className="text-primary fill-primary" />
-            </motion.span>
-            and lots of coffee
+            © {currentYear} Remus. All rights reserved. 
           </motion.p>
 
           <motion.div
@@ -167,18 +158,6 @@ export function Footer() {
             viewport={{ once: true }}
             className="flex items-center gap-6 text-sm text-foreground/60"
           >
-            {/* <a
-              href="#"
-              className="hover:text-primary transition-colors duration-300"
-            >
-              Privacy Policy
-            </a>
-            <a
-              href="#"
-              className="hover:text-primary transition-colors duration-300"
-            >
-              Terms of Service
-            </a> */}
           </motion.div>
         </div>
       </div>
