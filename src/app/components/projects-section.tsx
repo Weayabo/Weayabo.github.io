@@ -6,6 +6,7 @@ import careerlens from "@/assets/careerlens-project.png";
 import als1 from "@/assets/als-project-1.png";
 import als2 from "@/assets/als-project-2.png";
 import als3 from "@/assets/als-project-3.png";
+import trendandspot from "@/assets/t&s-project.png";
 
 const alsImages = [als1, als2, als3];
 
@@ -18,7 +19,6 @@ const projects = [
     tech: ["Angular", "Node.js", "MySQL", "GCP"],
     liveUrl:
       "https://careerlens-client-230445480118.asia-northeast1.run.app/homepage-page",
-    githubUrl: "#",
   },
   {
     title: "Library Attendance System",
@@ -26,6 +26,14 @@ const projects = [
       "A software application that scan barcode based on student number when entering the premises of PSU library.",
     image: alsImages[Math.floor(Math.random() * alsImages.length)],
     tech: ["Neatbeans", "Java", "MySQL", "Xampp"],
+  },
+  {
+    title: "Trends and Spots",
+    description:
+      "Trends and Spots is a portal to different places, events and people’s spaces. It is a window to each unique experience in life celebrated in million ways. This website will help you meet new people and cultures.",
+    image: trendandspot,
+    tech: ["Wordpress", "PHP"],
+    liveUrl:"https://www.trendsandspots.com/home/",
   },
 ];
 
