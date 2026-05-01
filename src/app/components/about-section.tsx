@@ -8,21 +8,34 @@ import {
   Cloud,
   GitBranch,
 } from "lucide-react";
-import logo from "@/assets/my-avatar.png";
+import logo from "@/assets/my-avatar-3.png";
 
 const techStack = [
+  // Frontend
   { name: "Angular", icon: Code2, category: "Frontend" },
   { name: "React", icon: Code2, category: "Frontend" },
+
+  // Backend
   { name: "Node.js", icon: Server, category: "Backend" },
   { name: "Express.js", icon: Server, category: "Backend" },
+  { name: "Next.js", icon: Server, category: "Backend" },
+  { name: "Python", icon: Server, category: "Backend" },
+  { name: "Django", icon: Server, category: "Backend" },
   { name: "PHP", icon: Server, category: "Backend" },
   { name: "Java", icon: Server, category: "Backend" },
+
+  // Database
   { name: "MySQL", icon: Database, category: "Database" },
+
+  // DevOps
   { name: "Docker", icon: Cloud, category: "DevOps" },
   { name: "Google Cloud", icon: Cloud, category: "DevOps" },
+
+  // Tools
   { name: "GitHub", icon: GitBranch, category: "Tools" },
   { name: "Figma", icon: Layout, category: "Tools" },
   { name: "VS Code", icon: Code2, category: "Tools" },
+  { name: "Pycharm", icon: Code2, category: "Tools" },
 ];
 
 export function AboutSection() {
@@ -96,16 +109,16 @@ export function AboutSection() {
               <div className="absolute inset-4 bg-gradient-to-br from-primary/20 to-accent rounded-2xl flex items-center justify-center overflow-hidden">
                 <motion.div
                   className="text-primary/20"
-                  animate={{
-                    scale: [1, 1.1, 1],
-                  }}
-                  transition={{
-                    duration: 4,
-                    repeat: Infinity,
-                    ease: "easeInOut",
-                  }}
+                  // animate={{
+                  //   scale: [1, 1.1, 1],
+                  // }}
+                  // transition={{
+                  //   duration: 4,
+                  //   repeat: Infinity,
+                  //   ease: "easeInOut",
+                  // }}
                 >
-                  <img src={logo} alt="Logo" className="w-200 h-150" />
+                  <img src={logo} alt="Logo" className="w-200 h-100%" />
                 </motion.div>
               </div>
 

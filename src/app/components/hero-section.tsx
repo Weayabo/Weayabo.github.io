@@ -17,19 +17,19 @@ export function HeroSection() {
       className="relative min-h-screen flex items-center justify-center overflow-hidden"
     >
       {/* Animated Gradient Background */}
-      <div className="absolute inset-0 bg-gradient-to-br from-background via-card to-secondary">
+      {/* <div className="absolute inset-0 bg-gradient-to-br from-background via-card to-secondary">
         <div
           className="absolute inset-0 bg-gradient-to-tr from-primary/10 via-transparent to-accent/10 animate-pulse"
           style={{ animationDuration: "8s" }}
         />
-      </div>
+      </div> */}
 
       {/* Particle Background */}
       <ParticleBackground />
 
       {/* Geometric Shapes */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
-        <motion.div
+        {/* <motion.div
           className="absolute top-1/4 left-1/4 w-64 h-64 border border-primary/20 rounded-lg"
           animate={{
             rotate: [0, 90, 180, 270, 360],
@@ -44,7 +44,7 @@ export function HeroSection() {
             opacity: [0.3, 0.6, 0.3],
           }}
           transition={{ duration: 15, repeat: Infinity, ease: "easeInOut" }}
-        />
+        /> */}
       </div>
 
       {/* Content */}
@@ -75,7 +75,7 @@ export function HeroSection() {
           >
             Full-Stack <span className="text-primary">|</span>{" "}
             <span className="bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">
-              Aspiring Web Developer
+              Aspiring Software Engineer
             </span>
           </motion.h2>
 
