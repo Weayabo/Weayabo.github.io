@@ -37,8 +37,6 @@ export function Navigation() {
 
   const toggleTheme = () => {
     const isDark = document.documentElement.classList.toggle("dark");
-
-    // Save preference
     localStorage.setItem("theme", isDark ? "dark" : "light");
   };
 
@@ -50,24 +48,24 @@ export function Navigation() {
         transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
         className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
           isScrolled
-            ? "bg-background/80 backdrop-blur-md border-b border-primary/20 shadow-lg shadow-accent/5"
+            ? "bg-background/80 backdrop-blur-md border-b border-white/10 shadow-lg"
             : "bg-transparent"
         }`}
       >
         <div className="max-w-7xl mx-auto px-6 lg:px-8">
           <div className="flex items-center justify-between h-20">
+
             {/* Logo */}
             <motion.a
               href="#home"
               onClick={(e) => handleNavClick(e, "#home")}
-              className="relative group"
+              className="relative"
               whileHover={{ scale: 1.05 }}
               transition={{ duration: 0.2 }}
             >
-              <span className="text-2xl font-['Space_Grotesk'] tracking-tight">
-                <span className="text-primary">REMUS</span>
+              <span className="text-2xl font-['Space_Grotesk'] tracking-tight text-foreground">
+                REMUS
               </span>
-              <div className="absolute -inset-2 bg-gradient-to-r from-primary/20 to-accent/20 rounded-lg blur opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
             </motion.a>
 
             {/* Desktop Navigation */}
@@ -77,46 +75,43 @@ export function Navigation() {
                   key={item.href}
                   href={item.href}
                   onClick={(e) => handleNavClick(e, item.href)}
-                  className="relative px-4 py-2 text-sm text-foreground/80 hover:text-primary transition-colors duration-300 group"
+                  className="relative px-4 py-2 text-sm text-foreground/60 hover:text-foreground transition-colors duration-200 group"
                   initial={{ opacity: 0, y: -20 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ delay: index * 0.1, duration: 0.4 }}
                   whileHover={{ scale: 1.05 }}
                 >
                   {item.label}
-                  <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-gradient-to-r from-primary to-accent group-hover:w-full transition-all duration-300" />
-                  <span className="absolute inset-0 bg-gradient-to-r from-primary/0 to-accent/0 group-hover:from-primary/10 group-hover:to-accent/10 rounded-lg transition-all duration-300" />
+                  <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-foreground group-hover:w-full transition-all duration-300" />
                 </motion.a>
               ))}
             </div>
 
-            <div className="hidden md:flex items-center gap-1">
+            {/* Desktop Right Controls */}
+            <div className="hidden md:flex items-center gap-2">
+              {/* Theme Toggle */}
               <motion.button
-                className="block w-10 h-10 mx-1 bg-gradient-to-r from-accent to-primary rounded-lg justify-center items-center hidden md:flex object-left-bottom cursor-pointer"
-                whileHover={{ backgroundColor: "#00D9FF" }}
+                className="w-10 h-10 flex items-center justify-center rounded-lg bg-background text-foreground border border-white/10 hover:bg-white hover:text-black transition-colors duration-200 cursor-pointer"
+                whileHover={{ scale: 1.05 }}
                 onClick={toggleTheme}
               >
-                <Moon />
+                <Moon size={16} />
               </motion.button>
 
-              {/* CTA Button - Desktop */}
+              {/* CTA Button */}
               <motion.a
                 href="#contact"
                 onClick={(e) => handleNavClick(e, "#contact")}
-                className="hidden md:block relative px-6 py-2.5 rounded-lg overflow-hidden group"
+                className="px-6 py-2.5 rounded-lg bg-foreground text-background text-sm font-medium border border-white/10 hover:bg-white hover:text-black transition-colors duration-200"
                 initial={{ opacity: 0, x: 20 }}
                 animate={{ opacity: 1, x: 0 }}
                 transition={{ delay: 0.6, duration: 0.4 }}
                 whileHover={{ scale: 1.05 }}
               >
-                <div className="absolute inset-0 bg-gradient-to-r from-primary to-accent" />
-                <div className="absolute inset-0 bg-gradient-to-r from-accent to-primary opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-                <span className="relative text-sm text-background font-medium">
-                  Get In Touch
-                </span>
-                <div className="absolute inset-0 shadow-[0_0_20px_rgba(0,217,255,0.4)] opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                Get In Touch
               </motion.a>
             </div>
+
             {/* Mobile Menu Button */}
             <button
               onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
@@ -135,7 +130,7 @@ export function Navigation() {
           animate={{ opacity: 1, x: 0 }}
           exit={{ opacity: 0, x: "100%" }}
           transition={{ duration: 0.3 }}
-          className="fixed inset-y-0 right-0 z-40 w-full max-w-sm bg-background/95 backdrop-blur-md md:hidden border-l border-foreground/20"
+          className="fixed inset-y-0 right-0 z-40 w-full max-w-sm bg-background/95 backdrop-blur-md md:hidden border-l border-white/10"
         >
           <div className="flex flex-col gap-2 p-8 pt-24">
             {navItems.map((item, index) => (
@@ -143,7 +138,7 @@ export function Navigation() {
                 key={item.href}
                 href={item.href}
                 onClick={(e) => handleNavClick(e, item.href)}
-                className="px-4 py-3 text-lg text-foreground/80 hover:text-background hover:bg-primary/10 rounded-lg transition-all duration-300"
+                className="px-4 py-3 text-lg text-foreground/70 hover:text-foreground hover:bg-foreground/5 rounded-lg transition-all duration-200"
                 initial={{ opacity: 0, x: 50 }}
                 animate={{ opacity: 1, x: 0 }}
                 transition={{ delay: index * 0.1, duration: 0.3 }}
@@ -152,18 +147,20 @@ export function Navigation() {
               </motion.a>
             ))}
 
+            {/* Mobile Theme Toggle */}
             <motion.button
-              className="px-2 w-10 h-10 bg-accent rounded-lg justify-center items-center md:flex cursor-pointer"
-              whileHover={{ backgroundColor: "#00D9FF" }}
+              className="w-10 h-10 flex items-center justify-center rounded-lg bg-black text-white border border-white/10 hover:bg-white hover:text-black transition-colors duration-200 cursor-pointer"
+              whileHover={{ scale: 1.05 }}
               onClick={toggleTheme}
             >
-              <Moon />
+              <Moon size={16} />
             </motion.button>
 
+            {/* Mobile CTA */}
             <motion.a
               href="#contact"
               onClick={(e) => handleNavClick(e, "#contact")}
-              className="mt-4 px-4 py-3 text-lg text-center bg-gradient-to-r from-primary to-accent text-background font-medium rounded-lg"
+              className="mt-4 px-4 py-3 text-lg text-center bg-black text-white font-medium rounded-lg border border-white/10 hover:bg-white hover:text-black transition-colors duration-200"
               initial={{ opacity: 0, x: 50 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ delay: navItems.length * 0.1, duration: 0.3 }}

@@ -87,7 +87,7 @@ function ProjectCard({ project, index, isVisible }: ProjectCardProps) {
       className="group relative rounded-2xl overflow-hidden"
     >
       {/* Glassmorphism Card */}
-      <div className="relative h-full bg-gradient-to-br from-primary/80 to-accent/40 backdrop-blur-sm border border-primary/10 group-hover:border-primary/30 transition-all duration-300 overflow-hidden">
+      <div className="relative h-full bg-foreground/20 backdrop-blur-sm border border-primary/10 group-hover:border-primary/30 transition-all duration-300 overflow-hidden">
         {/* Animated Border Glow */}
         <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
           <div className="absolute inset-0 bg-gradient-to-r from-background/20 via-background/20 to-background/20 animate-pulse" />
@@ -222,11 +222,11 @@ export function ProjectsSection() {
           className="mb-16 text-center"
         >
           <h2 className="text-4xl md:text-5xl mb-4 inline-block">
-            <span className="bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">
+            <span className="bg-foreground bg-clip-text text-transparent">
               Featured Projects
             </span>
           </h2>
-          <div className="h-1 w-24 bg-gradient-to-r from-primary to-accent mx-auto rounded-full" />
+          <div className="h-1 w-24 bg-foreground to-accent mx-auto rounded-full" />
           <p className="mt-6 text-lg text-foreground/100 max-w-2xl mx-auto">
             A showcase of my recent work and technical capabilities
           </p>

@@ -92,11 +92,11 @@ export function SkillsSection() {
           className="mb-16 text-center"
         >
           <h2 className="text-4xl md:text-5xl mb-4 inline-block">
-            <span className="bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">
+            <span className="bg-foreground bg-clip-text text-transparent">
               Skills & Expertise
             </span>
           </h2>
-          <div className="h-1 w-24 bg-gradient-to-r from-primary to-accent mx-auto rounded-full" />
+          <div className="h-1 w-24 bg-foreground mx-auto rounded-full" />
           <p className="mt-6 text-lg text-foreground/100 max-w-2xl mx-auto">
             A comprehensive toolkit of modern technologies and frameworks
           </p>
@@ -112,12 +112,12 @@ export function SkillsSection() {
               transition={{ delay: categoryIndex * 0.15, duration: 0.6 }}
               className="relative group"
             >
-              <div className="relative p-8 rounded-2xl bg-gradient-to-br from-primary/80 to-accent/40 backdrop-blur-sm border border-primary/10 hover:border-primary/30 transition-all duration-300">
+              <div className="relative p-8 rounded-2xl bg-primary backdrop-blur-sm border border-primary/10 hover:border-primary/30 transition-all duration-300">
                 {/* Glassmorphism Effect */}
                 <div className="absolute inset-0 bg-gradient-to-br from-primary/5 to-accent/5 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
                 
                 {/* Category Title */}
-                <h3 className="text-xl md:text-2xl mb-6 text-foreground relative">
+                <h3 className="text-xl md:text-2xl mb-6 text-background relative">
                   {category.category}
                 </h3>
 
@@ -126,14 +126,14 @@ export function SkillsSection() {
                   {category.skills.map((skill, skillIndex) => (
                     <div key={skill.name}>
                       <div className="flex justify-between mb-2">
-                        <span className="text-sm md:text-base text-foreground/80">
+                        <span className="text-sm md:text-base text-background">
                           {skill.name}
                         </span>
-                        <span className="text-sm text-accent">{skill.level}%</span>
+                        <span className="text-sm text-background">{skill.level}%</span>
                       </div>
                       
                       {/* Progress Bar Background */}
-                      <div className="h-2 bg-foreground/20 rounded-full overflow-hidden">
+                      <div className="h-2 bg-background/20 rounded-full overflow-hidden">
                         {/* Progress Bar Fill */}
                         <motion.div
                           initial={{ width: 0 }}
@@ -143,7 +143,7 @@ export function SkillsSection() {
                             duration: 1,
                             ease: [0.16, 1, 0.3, 1],
                           }}
-                          className="h-full bg-gradient-to-r from-primary to-accent rounded-full relative overflow-hidden"
+                          className="h-full bg-gradient-to-r from-background to-accent rounded-full relative overflow-hidden"
                         >
                           {/* Shimmer Effect */}
                           <motion.div
@@ -177,7 +177,7 @@ export function SkillsSection() {
           transition={{ delay: 0.8, duration: 0.6 }}
           className="mt-20"
         >
-          <h3 className="text-2xl md:text-3xl text-center mb-12 text-[#F5F5F5]">
+          <h3 className="text-2xl md:text-3xl text-center mb-12 bg-foreground bg-clip-text text-transparent">
             Core Competencies
           </h3>
           

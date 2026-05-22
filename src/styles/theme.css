@@ -3,94 +3,102 @@
 :root {
   --font-size: 16px;
 
-  /* Cyberpunk Color Palette */
-  --deep-black: #0a0e27;
-  --rich-charcoal: #1a1f3a;
-  --tech-blue-dark: #2d3e8f;
-  --tech-blue-light: #4a5fd9;
-  --bright-cyan: #00d9ff;
-  --electric-purple: #a78bfa;
-  --soft-white: #f5f5f5;
+  /* Minimal Monochrome Palette */
+  --black:         #0d0d0d;
+  --near-black:    #141414;
+  --dark-surface:  #1c1c1c;
+  --mid-gray:      #888888;
+  --light-gray:    #d4d4d4;
+  --off-white:     #f5f5f5;
+  --pure-white:    #ffffff;
 
-  --chart-1: oklch(0.646 0.222 41.116);
-  --chart-2: oklch(0.6 0.118 184.704);
-  --chart-3: oklch(0.398 0.07 227.392);
-  --chart-4: oklch(0.828 0.189 84.429);
-  --chart-5: oklch(0.769 0.188 70.08);
+  /* Soft Blue Accent */
+  --blue-accent:   #4a90d9;
+  --blue-tint:     #eaf3fb;
+  --blue-muted:    rgba(74, 144, 217, 0.15);
+
   --radius: 0.75rem;
-  --sidebar: oklch(0.985 0 0);
-  --sidebar-foreground: oklch(0.145 0 0);
-  --sidebar-primary: #030213;
-  --sidebar-primary-foreground: oklch(0.985 0 0);
-  --sidebar-accent: oklch(0.97 0 0);
-  --sidebar-accent-foreground: oklch(0.205 0 0);
-  --sidebar-border: oklch(0.922 0 0);
-  --sidebar-ring: oklch(0.708 0 0);
 
-  /* Light Theme Palette */
-  --light-bg: #f8fafc;
-  --light-card: #ffffff;
-  --light-text: #0f172a;
-  --light-muted: rgba(15, 23, 42, 0.1);
-  --light-border: rgba(15, 23, 42, 0.15);
+  /* Sidebar — light mode */
+  --sidebar: var(--pure-white);
+  --sidebar-foreground: #111111;
+  --sidebar-primary: #111111;
+  --sidebar-primary-foreground: var(--pure-white);
+  --sidebar-accent: #f5f5f5;
+  --sidebar-accent-foreground: #333333;
+  --sidebar-border: #e0e0e0;
+  --sidebar-ring: var(--blue-accent);
 
-  /* Theme Colors */
-  --background: var(--light-bg);
-  --foreground: var(--light-text);
-  --card: var(--light-card);
-  --card-foreground: var(--light-text);
-  --popover: var(--light-card);
-  --popover-foreground: var(--light-text);
-  --primary: #2563eb;
-  --primary-foreground: #ffffff;
-  --secondary: #6366f1;
-  --secondary-foreground: #ffffff;
-  --muted: var(--light-muted);
-  --muted-foreground: rgba(15, 23, 42, 0.7);
-  --accent: #7c3aed;
-  --accent-foreground: #ffffff;
-  --destructive: #dc2626;
-  --destructive-foreground: #ffffff;
-  --border: var(--light-border);
-  --input: rgba(15, 23, 42, 0.05);
-  --ring: #2563eb;
+  /* Chart colors — light mode (desaturated) */
+  --chart-1: oklch(0.55 0.08 220);
+  --chart-2: oklch(0.65 0.06 200);
+  --chart-3: oklch(0.45 0.05 230);
+  --chart-4: oklch(0.70 0.04 210);
+  --chart-5: oklch(0.60 0.07 215);
+
+  /* Light Theme */
+  --background:            #f8f8f8;
+  --foreground:            #111111;
+  --card:                  var(--pure-white);
+  --card-foreground:       #111111;
+  --popover:               var(--pure-white);
+  --popover-foreground:    #111111;
+  --primary:               #111111;
+  --primary-foreground:    var(--pure-white);
+  --secondary:             #f0f0f0;
+  --secondary-foreground:  #333333;
+  --muted:                 rgba(0, 0, 0, 0.06);
+  --muted-foreground:      rgba(0, 0, 0, 0.45);
+  --accent:                var(--blue-accent);
+  --accent-foreground:     var(--pure-white);
+  --destructive:           #dc2626;
+  --destructive-foreground:#ffffff;
+  --border:                rgba(0, 0, 0, 0.12);
+  --input:                 rgba(0, 0, 0, 0.04);
+  --ring:                  var(--blue-accent);
 }
 
+/* ─── DARK MODE (default intent) ─────────────────────────────────────── */
 .dark {
-  --background: var(--deep-black);
-  --foreground: var(--soft-white);
-  --card: var(--rich-charcoal);
-  --card-foreground: var(--soft-white);
-  --popover: var(--rich-charcoal);
-  --popover-foreground: var(--soft-white);
-  --primary: var(--bright-cyan);
-  --primary-foreground: var(--deep-black);
-  --secondary: var(--tech-blue-light);
-  --secondary-foreground: var(--soft-white);
-  --muted: rgba(255, 255, 255, 0.1);
-  --muted-foreground: rgba(245, 245, 245, 0.7);
-  --accent: var(--electric-purple);
-  --accent-foreground: var(--soft-white);
-  --destructive: oklch(0.396 0.141 25.723);
-  --destructive-foreground: oklch(0.637 0.237 25.331);
-  --border: rgba(0, 217, 255, 0.2);
-  --input: rgba(255, 255, 255, 0.05);
-  --ring: var(--bright-cyan);
+  --background:            var(--black);
+  --foreground:            var(--off-white);
+  --card:                  var(--near-black);
+  --card-foreground:       var(--off-white);
+  --popover:               var(--dark-surface);
+  --popover-foreground:    var(--off-white);
+  --primary:               var(--pure-white);
+  --primary-foreground:    var(--black);
+  --secondary:             var(--dark-surface);
+  --secondary-foreground:  var(--light-gray);
+  --muted:                 rgba(255, 255, 255, 0.07);
+  --muted-foreground:      rgba(245, 245, 245, 0.45);
+  --accent:                var(--blue-accent);
+  --accent-foreground:     var(--pure-white);
+  --destructive:           #7f1d1d;
+  --destructive-foreground:#fca5a5;
+  --border:                rgba(255, 255, 255, 0.09);
+  --input:                 rgba(255, 255, 255, 0.05);
+  --ring:                  var(--blue-accent);
+
+  /* Sidebar — dark mode */
+  --sidebar:               var(--near-black);
+  --sidebar-foreground:    var(--off-white);
+  --sidebar-primary:       var(--blue-accent);
+  --sidebar-primary-foreground: var(--pure-white);
+  --sidebar-accent:        var(--dark-surface);
+  --sidebar-accent-foreground: var(--light-gray);
+  --sidebar-border:        rgba(255, 255, 255, 0.08);
+  --sidebar-ring:          var(--blue-accent);
+
+  /* Chart colors — dark mode (desaturated) */
+  --chart-1: oklch(0.70 0.10 220);
+  --chart-2: oklch(0.60 0.07 200);
+  --chart-3: oklch(0.55 0.06 230);
+  --chart-4: oklch(0.75 0.05 210);
+  --chart-5: oklch(0.65 0.09 215);
+
   --font-weight-medium: 500;
   --font-weight-normal: 400;
-  --chart-1: oklch(0.488 0.243 264.376);
-  --chart-2: oklch(0.696 0.17 162.48);
-  --chart-3: oklch(0.769 0.188 70.08);
-  --chart-4: oklch(0.627 0.265 303.9);
-  --chart-5: oklch(0.645 0.246 16.439);
-  --sidebar: oklch(0.205 0 0);
-  --sidebar-foreground: oklch(0.985 0 0);
-  --sidebar-primary: oklch(0.488 0.243 264.376);
-  --sidebar-primary-foreground: oklch(0.985 0 0);
-  --sidebar-accent: oklch(0.269 0 0);
-  --sidebar-accent-foreground: oklch(0.985 0 0);
-  --sidebar-border: oklch(0.269 0 0);
-  --sidebar-ring: oklch(0.439 0 0);
 }
 
 @theme inline {
@@ -148,11 +156,6 @@
       "Segoe UI",
       sans-serif;
   }
-
-  /**
-  * Default typography styles for HTML elements (h1-h4, p, label, button, input).
-  * These are in @layer base, so Tailwind utility classes (like text-sm, text-lg) automatically override them.
-  */
 
   html {
     font-size: var(--font-size);

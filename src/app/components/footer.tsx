@@ -169,7 +169,7 @@ export function Footer() {
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
         whileHover={{ scale: 1.1, y: -5 }}
-        className="fixed bottom-8 right-8 p-4 bg-gradient-to-r from-primary to-accent rounded-full text-foreground shadow-lg hover:shadow-[0_0_30px_rgba(0,217,255,0.6)] transition-all duration-300 z-50"
+        className="fixed bottom-8 right-8 p-4 bg-foreground rounded-full text-background shadow-lg hover:shadow-[0_0_30px_rgba(0,217,255,0.6)] transition-all duration-300 z-50"
       >
         <ArrowUp size={24} />
       </motion.button>

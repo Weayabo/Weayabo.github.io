@@ -1,7 +1,7 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
 import App from "./app/App"; // import your App component
-import "./styles/index.css";
+import "./styles/index.css"; // import your global CSS
 
 const savedTheme = localStorage.getItem("theme");
 

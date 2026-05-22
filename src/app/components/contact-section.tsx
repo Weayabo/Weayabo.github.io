@@ -120,11 +120,11 @@ export function ContactSection() {
           className="mb-16 text-center"
         >
           <h2 className="text-4xl md:text-5xl mb-4 inline-block">
-            <span className="bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">
+            <span className="bg-foreground bg-clip-text text-transparent">
               Get In Touch
             </span>
           </h2>
-          <div className="h-1 w-24 bg-gradient-to-r from-primary to-accent mx-auto rounded-full" />
+          <div className="h-1 w-24 bg-foreground mx-auto rounded-full" />
           <p className="mt-6 text-lg text-foreground/100 max-w-2xl mx-auto">
             Have a project in mind? Let's work together to create something
             amazing
@@ -278,7 +278,7 @@ export function ContactSection() {
                 whileHover={!isSubmitting ? { scale: 1.02 } : {}}
                 whileTap={!isSubmitting ? { scale: 0.98 } : {}}
               >
-                <div className="absolute inset-0 bg-gradient-to-r from-primary to-accent" />
+                <div className="absolute inset-0 bg-accent" />
                 <div className="absolute inset-0 bg-gradient-to-r from-accent to-primary opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
                 <span className="relative text-foreground font-medium flex items-center justify-center gap-2">
                   {isSubmitting ? (

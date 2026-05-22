@@ -1,3 +1,4 @@
+import { useState, useEffect } from "react";
 import { motion } from "motion/react";
 import { ArrowDown, Github, Linkedin, Mail } from "lucide-react";
 import { ParticleBackground } from "./particle-background";
@@ -10,6 +11,53 @@ export function HeroSection() {
       element.scrollIntoView({ behavior: "smooth" });
     }
   };
+
+  const roles = [
+    "Fullstack",
+    "Frontend Engineer",
+    "Backend ",
+    "Web ",
+    "UI/UX ",
+    "Angular ",
+    "React ",
+    "Node.js ",
+    "Python ",
+    "Django ",
+    "REST API ",
+    "Database ",
+    "CI/CD ",
+    "Figma Designer",
+    "Responsive Dev",
+    "Software ",
+    "Open Source Contributor",
+  ];
+
+  const [displayed, setDisplayed] = useState("");
+  const [wordIndex, setWordIndex] = useState(0);
+  const [charIndex, setCharIndex] = useState(0);
+  const [deleting, setDeleting] = useState(false);
+
+  useEffect(() => {
+    const current = roles[wordIndex];
+    const delay = deleting ? 80 : charIndex === current.length ? 1400 : 200;
+
+    const timer = setTimeout(() => {
+      if (!deleting) {
+        setDisplayed(current.slice(0, charIndex + 1));
+        if (charIndex + 1 === current.length) setDeleting(true);
+        else setCharIndex((c) => c + 1);
+      } else {
+        setDisplayed(current.slice(0, charIndex - 1));
+        if (charIndex - 1 === 0) {
+          setDeleting(false);
+          setWordIndex((i) => (i + 1) % roles.length);
+          setCharIndex(0);
+        } else setCharIndex((c) => c - 1);
+      }
+    }, delay);
+
+    return () => clearTimeout(timer);
+  }, [charIndex, deleting, wordIndex]);
 
   return (
     <section
@@ -61,21 +109,24 @@ export function HeroSection() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.3, duration: 0.6 }}
           >
-            <span className="bg-gradient-to-r from-foreground via-primary to-accent bg-clip-text text-transparent">
+            <span className="bg-foreground bg-clip-text text-transparent">
               Remus Kinilitan
             </span>
           </motion.h1>
 
           {/* Title */}
           <motion.h2
-            className="text-2xl md:text-4xl lg:text-5xl text-foreground/80 mb-8"
+            className="text-2xl md:text-4xl lg:text-5xl text-accent/80 mb-8"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.4, duration: 0.6 }}
           >
-            Full-Stack <span className="text-primary">|</span>{" "}
-            <span className="bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">
-              Aspiring Software Engineer
+            <span className="text-[#4a90d9] border-r-2 border-[#4a90d9] pr-0.5 animate-pulse">
+              {displayed}
+            </span>
+            <span className="text-primary">|</span>{" "}
+            <span className="bg-foreground bg-clip-text text-transparent">
+              Software Engineer
             </span>
           </motion.h2>
 
@@ -100,28 +151,22 @@ export function HeroSection() {
           >
             <motion.a
               href="#contact"
-              className="relative px-8 py-4 rounded-lg overflow-hidden group w-full sm:w-auto"
+              className="relative px-8 py-4 rounded-lg bg-foreground text-background text-sm font-medium border border-white/10 hover:bg-white hover:text-black transition-colors duration-200 overflow-hidden group w-full sm:w-auto"
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
             >
-              <div className="absolute inset-0 bg-gradient-to-r from-primary to-accent" />
-              <div className="absolute inset-0 bg-gradient-to-r from-accent to-primary opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-              <span className="relative text-[#0A0E27] font-medium">
-                Contact Me
-              </span>
-              <div className="absolute inset-0 shadow-[0_0_30px_rgba(0,217,255,0.6)] opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+              <span>Contact Me</span>
             </motion.a>
 
             <motion.a
               href={Resume}
               target="_blank"
               rel="noopener noreferrer"
-              className="relative px-8 py-4 rounded-lg border-2 border-accent/50 text-foreground hover:bg-[#00D9FF]/10 transition-all duration-300 group w-full sm:w-auto"
-              whileHover={{ scale: 1.05, borderColor: "rgba(0, 217, 255, 1)" }}
+              className="relative px-8 py-4 rounded-lg border-accent text-foreground text-sm font-medium border hover:bg-white hover:text-black transition-colors duration-200 group w-full sm:w-auto"
+              whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
             >
               <span className="relative font-medium">View Resume</span>
-              <div className="absolute inset-0 shadow-[0_0_20px_rgba(0,217,255,0.3)] opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-lg" />
             </motion.a>
           </motion.div>
 
