@@ -30,7 +30,7 @@ export function ParticleBackground() {
     window.addEventListener("resize", resizeCanvas);
 
     // Create particles
-    const particleCount = 50;
+    const particleCount = 100;
     particlesRef.current = Array.from({ length: particleCount }, () => ({
       x: Math.random() * canvas.width,
       y: Math.random() * canvas.height,
@@ -57,7 +57,7 @@ export function ParticleBackground() {
         // Draw particle
         ctx.beginPath();
         ctx.arc(particle.x, particle.y, particle.size, 0, Math.PI * 2);
-        ctx.fillStyle = `rgba(0, 217, 255, ${particle.opacity})`;
+        ctx.fillStyle = `rgba(200, 200, 200, ${particle.opacity})`;
         ctx.fill();
       });
 
@@ -72,7 +72,7 @@ export function ParticleBackground() {
             ctx.beginPath();
             ctx.moveTo(particle.x, particle.y);
             ctx.lineTo(otherParticle.x, otherParticle.y);
-            ctx.strokeStyle = `rgba(0, 217, 255, ${0.15 * (1 - distance / 150)})`;
+            ctx.strokeStyle = `rgba(180, 180, 180, ${0.2 * (1 - distance / 150)})`;
             ctx.lineWidth = 1;
             ctx.stroke();
           }

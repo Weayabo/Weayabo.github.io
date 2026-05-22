@@ -78,11 +78,11 @@ export function AboutSection() {
           className="mb-16 text-center"
         >
           <h2 className="text-4xl md:text-5xl mb-4 inline-block">
-            <span className="bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">
+            <span className="bg-foreground bg-clip-text text-transparent">
               About Me
             </span>
           </h2>
-          <div className="h-1 w-24 bg-gradient-to-r from-primary to-accent mx-auto rounded-full" />
+          <div className="h-1 w-24 bg-foreground mx-auto rounded-full" />
         </motion.div>
 
         <div className="grid md:grid-cols-2 gap-12 items-center">
@@ -96,7 +96,7 @@ export function AboutSection() {
             <div className="relative aspect-square max-w-md mx-auto">
               {/* Animated Border */}
               <motion.div
-                className="absolute inset-0 rounded-2xl bg-gradient-to-r from-primary to-accent p-1"
+                className="absolute inset-0 rounded-2xl bg-primary to-accent p-1"
                 animate={{
                   rotate: [0, 360],
                 }}
