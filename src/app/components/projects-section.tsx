@@ -7,8 +7,13 @@ import als1 from "@/assets/als-project-1.png";
 import als2 from "@/assets/als-project-2.png";
 import als3 from "@/assets/als-project-3.png";
 import trendandspot from "@/assets/t&s-project.png";
+import sdmc1 from "@/assets/sdmc-project-1.png";
+import sdmc2 from "@/assets/sdmc-project-2.png";
+import sdmc3 from "@/assets/sdmc-project-3.png";
 
 const alsImages = [als1, als2, als3];
+
+const sdmcImages = [sdmc1, sdmc2, sdmc3];
 
 const projects = [
   {
@@ -34,6 +39,14 @@ const projects = [
     image: trendandspot,
     tech: ["Wordpress", "PHP"],
     liveUrl:"https://www.trendsandspots.com/home/",
+  },
+    {
+    title: "Songco Dental and Medical Clinic",
+    description:
+      "Songco Dental and Medical Clinic is a website that provides information about the clinic's services, doctors, and contact details. It also allows patients to book appointments online.",
+    image: sdmcImages[Math.floor(Math.random() * sdmcImages.length)],
+    tech: ["Angular", "Node.js", "MySQL", "Vercel", "Railway"],
+    liveUrl:"https://sdmc-frontend.vercel.app/",
   },
 ];
 

@@ -86,7 +86,7 @@ export function ContactSection() {
     {
       icon: MapPin,
       label: "Location",
-      value: "San Fernando. Pampanga, Philippines",
+      value: "San Fernando, Pampanga, Philippines",
       href: "https://maps.app.goo.gl/hz7pq2WP9gaGiahZ7",
     },
   ];
