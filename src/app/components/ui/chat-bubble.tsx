@@ -8,7 +8,7 @@ export function ChatBubble() {
     <>
       <button
         onClick={() => setOpen(true)}
-        className="fixed bottom-6 left-6 z-50 flex items-center gap-2 rounded-full px-5 py-3 font-medium text-sm shadow-lg transition-transform hover:scale-105"
+        className="fixed bottom-8 left-6 z-50 flex items-center gap-2 rounded-full px-5 py-3 font-medium text-sm shadow-lg transition-transform hover:scale-105"
         style={{
           background: "var(--accent)",
           color: "var(--accent-foreground)",
