@@ -6,10 +6,12 @@ import { ProjectsSection } from "@/app/components/projects-section";
 import { ContactSection } from "@/app/components/contact-section";
 import { Footer } from "@/app/components/footer";
 import { TriCursor } from "@/app/components/cursor";
+import { ChatBubble } from "@/app/components/ui/chat-bubble";
 
 export default function App() {
   return (
-    <div className="relative min-h-screen bg-background overflow-x-hidden md:cursor-none">
+    <div className="relative min-h-screen bg-background overflow-x-hidden ">
+      {/*add if kailangan md:cursor-none */}
       <Navigation />
       <main>
         <HeroSection />
@@ -23,10 +25,11 @@ export default function App() {
         <div className="absolute top-0 left-0 w-full h-full bg-[radial-gradient(circle_at_50%_50%,rgba(0,217,255,0.03),transparent_50%)]" />
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-[radial-gradient(circle,rgba(167,139,250,0.05),transparent_70%)]" />
       </div>
+      <ChatBubble />
 
       {/* Only render custom cursor on desktop */}
       <div className="hidden md:block">
-        <TriCursor />
+        {/* <TriCursor /> */}
       </div>
     </div>
   );
