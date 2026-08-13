@@ -2,24 +2,23 @@ import { useEffect, useRef, useState } from "react";
 import { motion, useMotionValue, useSpring, useTransform } from "motion/react";
 import { ExternalLink, Github } from "lucide-react";
 import { ImageWithFallback } from "@/app/components/figma/ImageWithFallback";
+
 import careerlens from "@/assets/careerlens-project.png";
 import als1 from "@/assets/als-project-1.png";
 import als2 from "@/assets/als-project-2.png";
 import als3 from "@/assets/als-project-3.png";
 import trendandspot from "@/assets/t&s-project.png";
-import sdmc1 from "@/assets/sdmc-project-1.png";
-import sdmc2 from "@/assets/sdmc-project-2.png";
-import sdmc3 from "@/assets/sdmc-project-3.png";
+
+import jobFitAnalyzer from "@/assets/job-fit-analyzer-project.png";
+import chatWithRemus from "@/assets/chat-with-remus-project.png";
 
 const alsImages = [als1, als2, als3];
 
-const sdmcImages = [sdmc1, sdmc2, sdmc3];
-
 const projects = [
   {
-    title: "Careerlens",
+    title: "CareerLens",
     description:
-      "A web application that recommend career base on family occupation and academic background, it also showcase job market trends",
+      "A web application that recommends career paths based on family occupation and academic background, while also showcasing job market trends.",
     image: careerlens,
     tech: ["Angular", "Node.js", "MySQL", "GCP"],
     liveUrl:
@@ -28,36 +27,60 @@ const projects = [
   {
     title: "Library Attendance System",
     description:
-      "A software application that scan barcode based on student number when entering the premises of PSU library.",
+      "A software application that automates library entry tracking by scanning student barcodes and recording attendance digitally.",
     image: alsImages[Math.floor(Math.random() * alsImages.length)],
-    tech: ["Neatbeans", "Java", "MySQL", "Xampp"],
+    tech: ["NetBeans", "Java", "MySQL", "XAMPP"],
+    githubUrl: "https://github.com/Weayabo/library-attendance-system",
   },
   {
     title: "Trends and Spots",
     description:
-      "Trends and Spots is a portal to different places, events and people’s spaces. It is a window to each unique experience in life celebrated in million ways. This website will help you meet new people and cultures.",
+      "A web portal showcasing places, events, and people's experiences, helping users discover different destinations, cultures, and communities.",
     image: trendandspot,
-    tech: ["Wordpress", "PHP"],
-    liveUrl:"https://www.trendsandspots.com/home/",
-  },
-    {
-    title: "Songco Dental and Medical Clinic",
-    description:
-      "Songco Dental and Medical Clinic is a website that provides information about the clinic's services, doctors, and contact details. It also allows patients to book appointments online.",
-    image: sdmcImages[Math.floor(Math.random() * sdmcImages.length)],
-    tech: ["Angular", "Node.js", "MySQL", "Vercel", "Railway"],
-    liveUrl:"https://sdmc-frontend.vercel.app/",
+    tech: ["WordPress", "PHP"],
+    liveUrl: "https://www.trendsandspots.com/home/",
   },
 ];
 
+const aiProjects = [
+  {
+    title: "Job Fit Analyzer",
+    description:
+      "An AI-powered web application that analyzes how well a resume matches a job description, identifies skill gaps, and provides Philippine-focused job search links.",
+    image: jobFitAnalyzer,
+    tech: ["Next.js", "Vercel AI SDK", "Gemini", "Zod"],
+    liveUrl: "https://job-fit-analyzer-gamma.vercel.app/",
+    githubUrl: "https://github.com/Weayabo/job-fit-analyzer",
+  },
+  {
+    title: "Chat with Remus",
+    description:
+      "A RAG-powered AI assistant embedded in my portfolio that answers questions about my background, skills, projects, and experience in first person.",
+    image: chatWithRemus,
+    tech: ["Next.js", "LangChain.js", "Pinecone", "Gemini"],
+    liveUrl: "https://chat-with-remus.vercel.app/",
+    githubUrl: "https://github.com/Weayabo/chat-with-remus",
+  },
+];
+
+type Project = {
+  title: string;
+  description: string;
+  image: string;
+  tech: string[];
+  liveUrl?: string;
+  githubUrl?: string;
+};
+
 interface ProjectCardProps {
-  project: (typeof projects)[0];
+  project: Project;
   index: number;
   isVisible: boolean;
 }
 
 function ProjectCard({ project, index, isVisible }: ProjectCardProps) {
   const [isHovered, setIsHovered] = useState(false);
+
   const mouseX = useMotionValue(0);
   const mouseY = useMotionValue(0);
 
@@ -65,6 +88,7 @@ function ProjectCard({ project, index, isVisible }: ProjectCardProps) {
     stiffness: 300,
     damping: 30,
   });
+
   const rotateY = useSpring(useTransform(mouseX, [-0.5, 0.5], [-5, 5]), {
     stiffness: 300,
     damping: 30,
@@ -72,8 +96,10 @@ function ProjectCard({ project, index, isVisible }: ProjectCardProps) {
 
   const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
     const rect = e.currentTarget.getBoundingClientRect();
+
     const centerX = rect.left + rect.width / 2;
     const centerY = rect.top + rect.height / 2;
+
     mouseX.set((e.clientX - centerX) / rect.width);
     mouseY.set((e.clientY - centerY) / rect.height);
   };
@@ -88,7 +114,10 @@ function ProjectCard({ project, index, isVisible }: ProjectCardProps) {
     <motion.div
       initial={{ opacity: 0, y: 50 }}
       animate={isVisible ? { opacity: 1, y: 0 } : {}}
-      transition={{ delay: index * 0.1, duration: 0.6 }}
+      transition={{
+        delay: index * 0.1,
+        duration: 0.6,
+      }}
       style={{
         rotateX: isHovered ? rotateX : 0,
         rotateY: isHovered ? rotateY : 0,
@@ -106,12 +135,15 @@ function ProjectCard({ project, index, isVisible }: ProjectCardProps) {
           <div className="absolute inset-0 bg-gradient-to-r from-background/20 via-background/20 to-background/20 animate-pulse" />
         </div>
 
-        {/* Image Container with Parallax */}
+        {/* Image Container */}
         <div className="relative h-56 overflow-hidden">
           <motion.div
             className="w-full h-full"
             whileHover={{ scale: 1.1 }}
-            transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
+            transition={{
+              duration: 0.6,
+              ease: [0.16, 1, 0.3, 1],
+            }}
           >
             <ImageWithFallback
               src={project.image}
@@ -129,23 +161,35 @@ function ProjectCard({ project, index, isVisible }: ProjectCardProps) {
             whileHover={{ opacity: 1 }}
             className="absolute inset-0 bg-gradient-to-br from-primary/20 to-accent/20 backdrop-blur-sm flex items-center justify-center gap-4"
           >
-            <motion.a
-              href={project.liveUrl}
-              whileHover={{ scale: 1.1 }}
-              whileTap={{ scale: 0.95 }}
-              className="p-3 bg-background text-foreground rounded-lg hover:shadow-[0_0_20px_rgba(0,217,255,0.6)] transition-shadow duration-300"
-            >
-              <ExternalLink size={20} />
-            </motion.a>
-            {/*
-            <motion.a
-              href={project.githubUrl}
-              whileHover={{ scale: 1.1 }}
-              whileTap={{ scale: 0.95 }}
-              className="p-3 bg-[#A78BFA] text-[#0A0E27] rounded-lg hover:shadow-[0_0_20px_rgba(167,139,250,0.6)] transition-shadow duration-300"
-            >
-              <Github size={20} />
-            </motion.a> */}
+            {/* Live Demo */}
+            {project.liveUrl && (
+              <motion.a
+                href={project.liveUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label={`View ${project.title} live demo`}
+                whileHover={{ scale: 1.1 }}
+                whileTap={{ scale: 0.95 }}
+                className="p-3 bg-background text-foreground rounded-lg hover:shadow-[0_0_20px_rgba(0,217,255,0.6)] transition-shadow duration-300"
+              >
+                <ExternalLink size={20} />
+              </motion.a>
+            )}
+
+            {/* GitHub */}
+            {project.githubUrl && (
+              <motion.a
+                href={project.githubUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label={`View ${project.title} on GitHub`}
+                whileHover={{ scale: 1.1 }}
+                whileTap={{ scale: 0.95 }}
+                className="p-3 bg-background text-foreground rounded-lg hover:shadow-[0_0_20px_rgba(0,217,255,0.6)] transition-shadow duration-300"
+              >
+                <Github size={20} />
+              </motion.a>
+            )}
           </motion.div>
         </div>
 
@@ -164,8 +208,18 @@ function ProjectCard({ project, index, isVisible }: ProjectCardProps) {
             {project.tech.map((tech, techIndex) => (
               <motion.span
                 key={tech}
-                initial={{ opacity: 0, scale: 0.8 }}
-                animate={isVisible ? { opacity: 1, scale: 1 } : {}}
+                initial={{
+                  opacity: 0,
+                  scale: 0.8,
+                }}
+                animate={
+                  isVisible
+                    ? {
+                        opacity: 1,
+                        scale: 1,
+                      }
+                    : {}
+                }
                 transition={{
                   delay: index * 0.1 + techIndex * 0.05,
                   duration: 0.3,
@@ -185,6 +239,31 @@ function ProjectCard({ project, index, isVisible }: ProjectCardProps) {
   );
 }
 
+interface ProjectGridProps {
+  projects: Project[];
+  isVisible: boolean;
+  startIndex?: number;
+}
+
+function ProjectGrid({
+  projects,
+  isVisible,
+  startIndex = 0,
+}: ProjectGridProps) {
+  return (
+    <div className="grid md:grid-cols-2 lg:grid-cols-2 gap-8">
+      {projects.map((project, index) => (
+        <ProjectCard
+          key={project.title}
+          project={project}
+          index={startIndex + index}
+          isVisible={isVisible}
+        />
+      ))}
+    </div>
+  );
+}
+
 export function ProjectsSection() {
   const [isVisible, setIsVisible] = useState(false);
   const sectionRef = useRef<HTMLElement>(null);
@@ -196,7 +275,9 @@ export function ProjectsSection() {
           setIsVisible(true);
         }
       },
-      { threshold: 0.2 },
+      {
+        threshold: 0.2,
+      },
     );
 
     if (sectionRef.current) {
@@ -214,6 +295,7 @@ export function ProjectsSection() {
     >
       {/* Background */}
       <div className="absolute inset-0 bg-background" />
+
       <div className="absolute top-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-primary/50 to-transparent" />
 
       {/* Animated Background Elements */}
@@ -223,11 +305,18 @@ export function ProjectsSection() {
           scale: [1, 1.2, 1],
           opacity: [0.3, 0.5, 0.3],
         }}
-        transition={{ duration: 12, repeat: Infinity, ease: "easeInOut" }}
+        transition={{
+          duration: 12,
+          repeat: Infinity,
+          ease: "easeInOut",
+        }}
       />
 
       <div className="relative z-10 max-w-7xl mx-auto px-6 lg:px-8">
-        {/* Section Header */}
+        {/* ========================= */}
+        {/* FEATURED PROJECTS */}
+        {/* ========================= */}
+
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           animate={isVisible ? { opacity: 1, y: 0 } : {}}
@@ -239,23 +328,51 @@ export function ProjectsSection() {
               Featured Projects
             </span>
           </h2>
-          <div className="h-1 w-24 bg-foreground to-accent mx-auto rounded-full" />
+
+          <div className="h-1 w-24 bg-foreground mx-auto rounded-full" />
+
           <p className="mt-6 text-lg text-foreground/100 max-w-2xl mx-auto">
-            A showcase of my recent work and technical capabilities
+            A selection of applications I've designed and developed across web,
+            software, and full-stack development.
           </p>
         </motion.div>
 
-        {/* Projects Grid */}
-        <div className="grid md:grid-cols-2 lg:grid-cols-2 gap-8">
-          {projects.map((project, index) => (
-            <ProjectCard
-              key={project.title}
-              project={project}
-              index={index}
-              isVisible={isVisible}
-            />
-          ))}
-        </div>
+        {/* Core Projects */}
+        <ProjectGrid projects={projects} isVisible={isVisible} />
+
+        {/* ========================= */}
+        {/* AI & LLM PROJECTS */}
+        {/* ========================= */}
+
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          animate={isVisible ? { opacity: 1, y: 0 } : {}}
+          transition={{
+            duration: 0.6,
+            delay: 0.2,
+          }}
+          className="mt-32 mb-16 text-center"
+        >
+          <h2 className="text-4xl md:text-5xl mb-4 inline-block">
+            <span className="bg-foreground bg-clip-text text-transparent">
+              AI & LLM Projects
+            </span>
+          </h2>
+
+          <div className="h-1 w-24 bg-foreground mx-auto rounded-full" />
+
+          <p className="mt-6 text-lg text-foreground/100 max-w-2xl mx-auto">
+            Exploring practical applications of AI, LLMs, and intelligent
+            software development.
+          </p>
+        </motion.div>
+
+        {/* AI Projects */}
+        <ProjectGrid
+          projects={aiProjects}
+          isVisible={isVisible}
+          startIndex={projects.length}
+        />
       </div>
     </section>
   );

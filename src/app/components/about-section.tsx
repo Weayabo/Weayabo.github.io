@@ -8,7 +8,7 @@ import {
   Cloud,
   GitBranch,
 } from "lucide-react";
-import logo from "@/assets/my-avatar-3.png";
+import logo from "@/assets/my-avatar-4.png";
 
 const techStack = [
   // Frontend
@@ -180,7 +180,7 @@ export function AboutSection() {
             <div className="grid grid-cols-3 gap-4 pt-8">
               {[
                 { value: "1+", label: "Year Experience" },
-                { value: "2", label: "Projects Completed" },
+                { value: "5", label: "Projects Completed" },
                 { value: "100+", label: "Happy Clients" },
               ].map((stat, index) => (
                 <motion.div
