@@ -73,7 +73,7 @@ export function HeroSection() {
       </div> */}
 
       {/* Particle Background */}
-      <ParticleBackground />
+      {/* <ParticleBackground /> */}
 
       {/* Geometric Shapes */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
