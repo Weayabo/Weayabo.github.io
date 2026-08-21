@@ -290,7 +290,7 @@ export function AboutSection() {
           </div>
 
           <h2 className="text-5xl tracking-tight text-foreground md:text-7xl font-['Cinzel']">
-            The Rider
+            The Traveler
             <span className="block text-foreground/40">Behind the Code</span>
           </h2>
 
@@ -302,64 +302,186 @@ export function AboutSection() {
         </motion.div>
 
         {/* =========================================================
-            PROFILE / PORTRAIT
-            ========================================================= */}
+    RIDER PROFILE
+   ========================================================= */}
 
-        <div className="mt-28 grid items-center gap-16 lg:grid-cols-[0.9fr_1.1fr] lg:gap-24">
-          {/* Portrait */}
-          <motion.div
-            initial={{ opacity: 0, x: -60 }}
-            animate={hasEntered ? { opacity: 1, x: 0 } : {}}
-            transition={{
-              delay: 0.2,
-              duration: 0.9,
-              ease: [0.16, 1, 0.3, 1],
-            }}
-            className="relative mx-auto w-full max-w-lg"
-          >
-            <div className="relative aspect-square">
-              {/* Compass ring */}
+        <div className="relative mt-24 lg:mt-32">
+          {/* Decorative route lines */}
+
+          <div className="pointer-events-none absolute left-0 right-0 top-1/2 hidden h-px bg-gradient-to-r from-transparent via-[var(--green-accent)]/10 to-transparent lg:block" />
+
+          <div className="grid items-center gap-14 lg:grid-cols-[1fr_auto_1fr] lg:gap-10">
+            {/* =======================================================
+        LEFT — WHO I AM
+       ======================================================= */}
+
+            <motion.div
+              initial={{ opacity: 0, x: -50 }}
+              animate={hasEntered ? { opacity: 1, x: 0 } : {}}
+              transition={{
+                delay: 0.2,
+                duration: 0.8,
+                ease: [0.16, 1, 0.3, 1],
+              }}
+              className="text-center lg:text-right"
+            >
+              <div className="mb-5 flex items-center justify-center gap-3 lg:justify-end">
+                <span className="text-[10px] font-medium tracking-[0.3em] text-[var(--green-accent)] uppercase font-['Cinzel']">
+                  The Rider
+                </span>
+
+                <span className="h-px w-10 bg-[var(--green-accent)]/40" />
+              </div>
+
+              <h3 className="text-3xl tracking-tight text-foreground md:text-4xl">
+                I build,
+                <span className="block text-foreground/35">
+                  experiment & explore.
+                </span>
+              </h3>
+
+              <div className="mt-7 space-y-4 text-sm leading-7 text-foreground/55 md:text-base">
+                <p>
+                  I'm a fullstack developer who enjoys figuring out how things
+                  work and turning ideas into something people can actually use.
+                </p>
+
+                <p>
+                  My path has taken me across frontend interfaces, backend
+                  systems, databases, cloud infrastructure, design, and
+                  AI-powered applications.
+                </p>
+              </div>
+
+              {/* Coordinates */}
+
+              <div className="mt-8 flex flex-wrap justify-center gap-x-6 gap-y-3 lg:justify-end">
+                <div>
+                  <p className="text-[8px] tracking-[0.2em] text-foreground/25 uppercase">
+                    Background
+                  </p>
+
+                  <p className="mt-1 text-xs text-foreground/65">
+                    Computer Science
+                  </p>
+                </div>
+
+                <div>
+                  <p className="text-[8px] tracking-[0.2em] text-foreground/25 uppercase">
+                    Terrain
+                  </p>
+
+                  <p className="mt-1 text-xs text-foreground/65">
+                    Web · AI · Systems
+                  </p>
+                </div>
+              </div>
+            </motion.div>
+
+            {/* =======================================================
+        CENTER — PORTRAIT
+       ======================================================= */}
+
+            <motion.div
+              initial={{ opacity: 0, scale: 0.85 }}
+              animate={
+                hasEntered
+                  ? {
+                      opacity: 1,
+                      scale: 1,
+                    }
+                  : {}
+              }
+              transition={{
+                delay: 0.3,
+                duration: 1,
+                ease: [0.16, 1, 0.3, 1],
+              }}
+              className="relative mx-auto w-full max-w-[340px]"
+            >
+              {/* Outer compass */}
+
               <motion.div
-                className="absolute -inset-7 rounded-full border border-dashed border-[var(--green-accent)]/100"
-                animate={{ rotate: 360 }}
+                className="
+          absolute
+          -inset-8
+          rounded-full
+          border
+          border-dashed
+          border-[var(--green-accent)]/20
+        "
+                animate={{
+                  rotate: 360,
+                }}
                 transition={{
-                  duration: 60,
+                  duration: 70,
                   repeat: Infinity,
                   ease: "linear",
                 }}
               />
 
-              {/* Secondary ring */}
+              {/* Inner compass */}
+
               <motion.div
-                className="absolute -inset-3 rounded-full border border-[var(--green-accent)]/50"
-                animate={{ rotate: -360 }}
+                className="
+          absolute
+          -inset-3
+          rounded-full
+          border
+          border-[var(--green-accent)]/30
+        "
+                animate={{
+                  rotate: -360,
+                }}
                 transition={{
-                  duration: 35,
+                  duration: 40,
                   repeat: Infinity,
                   ease: "linear",
                 }}
               />
 
-              {/* Compass markers */}
-              <span className="absolute -top-10 left-1/2 -translate-x-1/2 text-[9px] tracking-[0.25em] text-foreground/25">
+              {/* Direction markers */}
+
+              <span className="absolute -top-7 left-1/2 -translate-x-1/2 text-[8px] tracking-[0.3em] text-foreground/25">
                 N
               </span>
 
-              <span className="absolute -bottom-10 left-1/2 -translate-x-1/2 text-[9px] tracking-[0.25em] text-foreground/25">
+              <span className="absolute -bottom-7 left-1/2 -translate-x-1/2 text-[8px] tracking-[0.3em] text-foreground/25">
                 S
               </span>
 
-              <span className="absolute -left-10 top-1/2 -translate-y-1/2 text-[9px] tracking-[0.25em] text-foreground/25">
+              <span className="absolute -left-7 top-1/2 -translate-y-1/2 text-[8px] tracking-[0.3em] text-foreground/25">
                 W
               </span>
 
-              <span className="absolute -right-10 top-1/2 -translate-y-1/2 text-[9px] tracking-[0.25em] text-foreground/25">
+              <span className="absolute -right-7 top-1/2 -translate-y-1/2 text-[8px] tracking-[0.3em] text-foreground/25">
                 E
               </span>
 
-              {/* Portrait frame */}
-              <div className="absolute inset-4 overflow-hidden rounded-[2rem] border border-[var(--green-accent)]/20 bg-[var(--green-accent)]/[0.04]">
-                <div className="absolute inset-0 bg-gradient-to-br from-[var(--green-accent)]/10 via-transparent to-[var(--green-bright)]/5" />
+              {/* Portrait */}
+
+              <div
+                className="
+        relative
+        aspect-square
+        overflow-hidden
+        rounded-[2rem]
+        border
+        border-[var(--green-accent)]/25
+        bg-[var(--green-accent)]/[0.04]
+        shadow-[0_0_80px_rgba(111,191,122,0.08)]
+      "
+              >
+                <div
+                  className="
+          absolute
+          inset-0
+          bg-gradient-to-br
+          from-[var(--green-accent)]/10
+          via-transparent
+          to-[var(--green-bright)]/5
+        "
+                />
 
                 <motion.img
                   src={logo}
@@ -367,29 +489,75 @@ export function AboutSection() {
                   className="relative h-full w-full object-contain"
                   initial={{ scale: 1.08 }}
                   animate={hasEntered ? { scale: 1 } : {}}
-                  transition={{ duration: 1.4, ease: "easeOut" }}
+                  transition={{
+                    duration: 1.4,
+                    ease: "easeOut",
+                  }}
                 />
 
-                {/* Film grain / light */}
-                <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_20%,rgba(111,191,122,0.12),transparent_45%)]" />
+                <div
+                  className="
+          pointer-events-none
+          absolute
+          inset-0
+          bg-[radial-gradient(circle_at_50%_20%,rgba(111,191,122,0.12),transparent_45%)]
+        "
+                />
               </div>
 
               {/* Cycling badge */}
+
               <motion.div
-                className="absolute -bottom-5 -right-5 flex h-20 w-20 items-center justify-center rounded-full border border-[var(--green-accent)]/30 bg-background/90 backdrop-blur-md"
-                initial={{ opacity: 0, scale: 0.7 }}
-                animate={hasEntered ? { opacity: 1, scale: 1 } : {}}
-                transition={{ delay: 0.8, duration: 0.5 }}
+                className="
+          absolute
+          -bottom-5
+          -right-5
+          flex
+          h-16
+          w-16
+          items-center
+          justify-center
+          rounded-full
+          border
+          border-[var(--green-accent)]/30
+          bg-background/90
+          backdrop-blur-md
+        "
+                initial={{
+                  opacity: 0,
+                  scale: 0.7,
+                }}
+                animate={
+                  hasEntered
+                    ? {
+                        opacity: 1,
+                        scale: 1,
+                      }
+                    : {}
+                }
+                transition={{
+                  delay: 0.8,
+                  duration: 0.5,
+                }}
               >
                 <Bike
-                  size={27}
+                  size={23}
                   strokeWidth={1.3}
                   className="text-[var(--green-accent)]"
                 />
 
                 <motion.div
-                  className="absolute inset-2 rounded-full border border-dashed border-[var(--green-accent)]/20"
-                  animate={{ rotate: 360 }}
+                  className="
+            absolute
+            inset-2
+            rounded-full
+            border
+            border-dashed
+            border-[var(--green-accent)]/20
+          "
+                  animate={{
+                    rotate: 360,
+                  }}
                   transition={{
                     duration: 12,
                     repeat: Infinity,
@@ -397,81 +565,167 @@ export function AboutSection() {
                   }}
                 />
               </motion.div>
-            </div>
-          </motion.div>
+            </motion.div>
 
-          {/* Story */}
+            {/* =======================================================
+        RIGHT — HOW I WORK
+       ======================================================= */}
+
+            <motion.div
+              initial={{ opacity: 0, x: 50 }}
+              animate={hasEntered ? { opacity: 1, x: 0 } : {}}
+              transition={{
+                delay: 0.4,
+                duration: 0.8,
+                ease: [0.16, 1, 0.3, 1],
+              }}
+            >
+              <div className="mb-5 flex items-center justify-center gap-3 lg:justify-start">
+                <span className="h-px w-10 bg-[var(--green-accent)]/40" />
+
+                <span className="text-[10px] font-medium tracking-[0.3em] text-[var(--green-accent)] uppercase font-['Cinzel']">
+                  The Approach
+                </span>
+              </div>
+
+              <h3 className="text-center text-3xl tracking-tight text-foreground md:text-4xl lg:text-left">
+                Learn.
+                <span className="text-foreground/35"> Build. Adapt.</span>
+              </h3>
+
+              <div className="mt-8 space-y-6">
+                {milestones.map((milestone, index) => {
+                  const Icon = milestone.icon;
+
+                  return (
+                    <motion.div
+                      key={milestone.number}
+                      initial={{
+                        opacity: 0,
+                        x: 25,
+                      }}
+                      animate={
+                        hasEntered
+                          ? {
+                              opacity: 1,
+                              x: 0,
+                            }
+                          : {}
+                      }
+                      transition={{
+                        delay: 0.6 + index * 0.15,
+                        duration: 0.6,
+                      }}
+                      className="group flex gap-4"
+                    >
+                      {/* Icon */}
+
+                      <div
+                        className="
+                flex
+                h-10
+                w-10
+                shrink-0
+                items-center
+                justify-center
+                rounded-xl
+                border
+                border-[var(--green-accent)]/20
+                bg-[var(--green-accent)]/5
+                transition-colors
+                duration-300
+                group-hover:border-[var(--green-accent)]/40
+              "
+                      >
+                        <Icon
+                          size={17}
+                          strokeWidth={1.4}
+                          className="text-[var(--green-accent)]"
+                        />
+                      </div>
+
+                      {/* Text */}
+
+                      <div>
+                        <div className="flex items-center gap-3">
+                          <span className="text-[8px] tracking-[0.2em] text-[var(--green-accent)]/50">
+                            {milestone.number}
+                          </span>
+
+                          <h4 className="text-sm font-medium text-foreground">
+                            {milestone.title}
+                          </h4>
+                        </div>
+
+                        <p className="mt-1.5 max-w-sm text-xs leading-6 text-foreground/45 md:text-sm">
+                          {milestone.description}
+                        </p>
+                      </div>
+                    </motion.div>
+                  );
+                })}
+              </div>
+            </motion.div>
+          </div>
+
+          {/* =========================================================
+      SMALL PROFILE DATA
+     ========================================================= */}
+
           <motion.div
-            initial={{ opacity: 0, x: 60 }}
-            animate={hasEntered ? { opacity: 1, x: 0 } : {}}
+            initial={{ opacity: 0, y: 20 }}
+            animate={hasEntered ? { opacity: 1, y: 0 } : {}}
             transition={{
-              delay: 0.35,
-              duration: 0.9,
-              ease: [0.16, 1, 0.3, 1],
+              delay: 1,
+              duration: 0.7,
             }}
+            className="
+      mx-auto
+      mt-20
+      flex
+      max-w-3xl
+      flex-wrap
+      items-center
+      justify-center
+      gap-x-10
+      gap-y-4
+      border-y
+      border-border/50
+      py-5
+    "
           >
-            <div className="mb-8 flex items-center gap-3">
-              <Sparkles size={16} className="text-[var(--green-bright)]" />
+            <div className="text-center">
+              <span className="block text-[8px] tracking-[0.2em] text-foreground/25 uppercase">
+                Current role
+              </span>
 
-              <span className="text-xs font-medium tracking-[0.22em] text-[var(--green-accent)] uppercase font-['Cinzel']">
-                A little about the rider
+              <span className="mt-1 block text-xs text-foreground/65">
+                Fullstack Web Developer
               </span>
             </div>
 
-            <h3 className="max-w-xl text-3xl leading-tight tracking-tight text-foreground md:text-4xl">
-              I build, I experiment,
-              <span className="text-foreground/40"> and I keep moving.</span>
-            </h3>
+            <span className="hidden h-6 w-px bg-border/60 sm:block" />
 
-            <div className="mt-8 space-y-5 text-base leading-8 text-foreground/60 md:text-lg">
-              <p>
-                My path into software has never really been a straight line. I
-                have moved between frontend interfaces, backend systems,
-                databases, cloud infrastructure, design, and whatever problem
-                happened to be waiting on the other side.
-              </p>
+            <div className="text-center">
+              <span className="block text-[8px] tracking-[0.2em] text-foreground/25 uppercase">
+                Focus
+              </span>
 
-              <p>
-                That is probably why I enjoy development. There is always
-                another route to discover, another system to understand, or
-                another idea that can be turned into something real.
-              </p>
-
-              <p>
-                Cycling gives me a similar feeling. Pick a direction, commit to
-                the climb, learn the terrain, and change the route when
-                necessary.
-              </p>
+              <span className="mt-1 block text-xs text-foreground/65">
+                Web · AI · Systems
+              </span>
             </div>
 
-            {/* Small coordinates */}
-            <div className="mt-10 flex flex-wrap gap-8 border-t border-border/60 pt-6">
-              <div>
-                <p className="text-[9px] tracking-[0.2em] text-foreground/30 uppercase">
-                  Current role
-                </p>
-                <p className="mt-1 text-sm text-foreground/70">
-                  Fullstack Web Developer
-                </p>
-              </div>
+            <span className="hidden h-6 w-px bg-border/60 sm:block" />
 
-              <div>
-                <p className="text-[9px] tracking-[0.2em] text-foreground/30 uppercase">
-                  Terrain
-                </p>
-                <p className="mt-1 text-sm text-foreground/70">
-                  Web · AI · Systems
-                </p>
-              </div>
+            <div className="text-center">
+              <span className="block text-[8px] tracking-[0.2em] text-foreground/25 uppercase">
+                Method
+              </span>
 
-              <div>
-                <p className="text-[9px] tracking-[0.2em] text-foreground/30 uppercase">
-                  Method
-                </p>
-                <p className="mt-1 text-sm text-foreground/70">
-                  Learn · Build · Adapt
-                </p>
-              </div>
+              <span className="mt-1 block text-xs text-foreground/65">
+                Learn · Build · Adapt
+              </span>
             </div>
           </motion.div>
         </div>
@@ -500,64 +754,6 @@ export function AboutSection() {
               things worth building.
             </p>
           </motion.div>
-
-          {/* Route */}
-          <div className="relative">
-            {/* Desktop route line */}
-            <div className="absolute left-[10%] right-[10%] top-16 hidden h-px bg-border md:block">
-              <motion.div
-                className="h-full origin-left bg-[var(--green-accent)]"
-                style={{
-                  scaleX: routePath,
-                }}
-              />
-            </div>
-
-            <div className="grid gap-12 md:grid-cols-3 md:gap-16">
-              {milestones.map((milestone, index) => {
-                const Icon = milestone.icon;
-
-                return (
-                  <motion.div
-                    key={milestone.number}
-                    initial={{ opacity: 0, y: 40 }}
-                    animate={hasEntered ? { opacity: 1, y: 0 } : {}}
-                    transition={{
-                      delay: 0.8 + index * 0.18,
-                      duration: 0.7,
-                    }}
-                    className="relative text-center"
-                  >
-                    {/* Waypoint */}
-                    <div className="relative z-10 mx-auto mb-7 flex h-32 w-32 items-center justify-center rounded-full border border-[var(--green-accent)]/20 bg-background">
-                      <div className="absolute inset-3 rounded-full border border-dashed border-[var(--green-accent)]/15" />
-
-                      <Icon
-                        size={28}
-                        strokeWidth={1.3}
-                        className="text-[var(--green-accent)]"
-                      />
-
-                      <span className="absolute -bottom-1 -right-1 flex h-7 w-7 items-center justify-center rounded-full border border-border bg-background text-[9px] text-foreground/50">
-                        {milestone.number}
-                      </span>
-                    </div>
-
-                    {/* Centered Content */}
-                    <div className="flex flex-col items-center">
-                      <h4 className="text-xl font-medium text-foreground">
-                        {milestone.title}
-                      </h4>
-
-                      <p className="mt-3 max-w-xs text-sm leading-7 text-foreground/45 md:text-base">
-                        {milestone.description}
-                      </p>
-                    </div>
-                  </motion.div>
-                );
-              })}
-            </div>
-          </div>
         </div>
 
         {/* =========================================================

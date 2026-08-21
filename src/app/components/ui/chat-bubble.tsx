@@ -1,7 +1,7 @@
-import { useState, useEffect } from "react";
-import { MessageCircle, X } from "lucide-react";
+import { useState } from "react";
+import { X } from "lucide-react";
+import { motion, AnimatePresence } from "motion/react";
 import { useIdle } from "@/app/hooks/useIdle";
-import { AnimatePresence } from "motion/react";
 
 export function ChatBubble() {
   const [open, setOpen] = useState(false);
@@ -9,54 +9,177 @@ export function ChatBubble() {
 
   return (
     <>
+      {/* =========================================================
+          CHAT INPUT
+         ========================================================= */}
+
       <AnimatePresence>
-        {!isIdle && (
-          <button
-            key="chat-bubble"
+        {!isIdle && !open && (
+          <motion.button
+            key="chat-input"
+            type="button"
             onClick={() => setOpen(true)}
-            className="fixed bottom-8 left-6 z-50 flex items-center gap-2 rounded-full px-5 py-3 font-medium text-sm shadow-lg transition-transform hover:scale-105"
-            style={{
-              background: "var(--accent)",
-              color: "var(--accent-foreground)",
-              boxShadow: "0 4px 20px rgba(91,140,90,0.4)",
+            initial={{
+              opacity: 0,
+              y: 12,
             }}
+            animate={{
+              opacity: 1,
+              y: 0,
+            }}
+            exit={{
+              opacity: 0,
+              y: 12,
+            }}
+            transition={{
+              duration: 0.35,
+              ease: [0.16, 1, 0.3, 1],
+            }}
+            className="
+              fixed
+              bottom-8
+              left-6
+              z-50
+
+              w-72
+              sm:w-80
+
+              cursor-text
+
+              border
+              border-[var(--green-accent)]/30
+
+              bg-black/70
+              backdrop-blur-md
+
+              px-4
+              py-3
+
+              text-left
+              text-sm
+              text-foreground/50
+
+              shadow-[0_8px_30px_rgba(0,0,0,0.35)]
+
+              transition-all
+              duration-200
+
+              hover:border-[var(--green-accent)]/60
+              hover:bg-black/80
+              hover:text-foreground/80
+
+              rounded-sm
+            "
           >
-            <MessageCircle size={18} />
-            Chat with my AI
+            <span>Chat with me</span>
+
+            {/* Optional subtle typing cursor */}
+
             <span
-              className="absolute -top-1.5 -left-1.5 rounded-full px-1.5 py-0.5 text-[10px] font-bold text-white animate-pulse"
-              style={{ background: "#22c55e" }}
-            >
-              NEW
-            </span>
-          </button>
+              className="
+                ml-1
+                inline-block
+                h-3
+                w-px
+                animate-pulse
+                bg-[var(--green-accent)]
+                align-middle
+              "
+            />
+          </motion.button>
         )}
       </AnimatePresence>
 
-      {open && (
-        <div
-          className="fixed inset-0 z-[100] flex items-center justify-center p-4 bg-black/60 pointer-events-auto md:bg-transparent md:pointer-events-none md:items-start md:justify-start md:p-3 md:pt-30"
-          onClick={() => setOpen(false)}
-        >
-          <div
-            className="relative w-full max-w-lg h-[80vh] md:w-[400px] md:h-[calc(100vh-8rem)] rounded-2xl overflow-hidden shadow-2xl pointer-events-auto"
-            style={{ background: "var(--card)" }}
-            onClick={(e) => e.stopPropagation()}
+      {/* =========================================================
+          CHAT WINDOW
+         ========================================================= */}
+
+      <AnimatePresence>
+        {open && (
+          <motion.div
+            initial={{
+              opacity: 0,
+              y: 20,
+              scale: 0.97,
+            }}
+            animate={{
+              opacity: 1,
+              y: 0,
+              scale: 1,
+            }}
+            exit={{
+              opacity: 0,
+              y: 20,
+              scale: 0.97,
+            }}
+            transition={{
+              duration: 0.3,
+              ease: [0.16, 1, 0.3, 1],
+            }}
+            className="
+              fixed
+              bottom-6
+              left-6
+              z-[100]
+
+              h-[80vh]
+              w-[calc(100vw-3rem)]
+              max-w-lg
+
+              overflow-hidden
+              rounded-2xl
+
+              border
+              border-white/10
+
+              bg-[var(--card)]
+
+              shadow-2xl
+
+              md:h-[calc(100vh-4rem)]
+              md:w-[400px]
+            "
           >
+            {/* Close button */}
+
             <button
+              type="button"
               onClick={() => setOpen(false)}
-              className="absolute top-0 right-0 z-10 rounded-full p-1.5 bg-black/40 hover:bg-black/60 text-white transition-colors"
+              className="
+                absolute
+                right-3
+                top-3
+                z-10
+
+                flex
+                h-8
+                w-8
+                items-center
+                justify-center
+
+                rounded-full
+
+                bg-black/50
+                text-white/70
+
+                transition-colors
+
+                hover:bg-black/70
+                hover:text-white
+              "
+              aria-label="Close chat"
             >
-              <X size={18} />
+              <X size={16} />
             </button>
+
             <iframe
               src="https://chat-with-remus.vercel.app"
-              className="w-full h-full border-0"
+              className="h-full w-full border-0"
               title="Chat with Remus AI"
             />
-          </div>
-        </div>
-      )}
+          </motion.div>
+        )}
+      </AnimatePresence>
     </>
   );
 }

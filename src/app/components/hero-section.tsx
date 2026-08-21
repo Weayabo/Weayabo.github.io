@@ -58,11 +58,7 @@ export function HeroSection() {
   useEffect(() => {
     const currentRole = roles[wordIndex];
 
-    const delay = deleting
-      ? 70
-      : charIndex === currentRole.length
-        ? 1400
-        : 100;
+    const delay = deleting ? 70 : charIndex === currentRole.length ? 1400 : 100;
 
     const timer = setTimeout(() => {
       if (!deleting) {
@@ -90,9 +86,7 @@ export function HeroSection() {
   }, [charIndex, deleting, wordIndex]);
 
   const scrollToAbout = () => {
-    document
-      .getElementById("about")
-      ?.scrollIntoView({ behavior: "smooth" });
+    document.getElementById("about")?.scrollIntoView({ behavior: "smooth" });
   };
 
   return (
@@ -102,12 +96,13 @@ export function HeroSection() {
         relative
         flex
         min-h-screen
-        items-center
+        flex-col
         overflow-hidden
         px-6
+        pb-12
         pt-28
-        pb-16
-        lg:px-8
+        lg:px-12
+        lg:pb-16
       "
     >
       {/* =========================================================
@@ -181,385 +176,209 @@ export function HeroSection() {
       </motion.div>
 
       {/* =========================================================
-          HERO CONTENT
+          TITLE — centered, game-title treatment
          ========================================================= */}
 
-      <div className="relative z-10 mx-auto w-full max-w-6xl">
+      <div className="relative z-10 flex flex-1 flex-col items-center justify-center text-center">
+        {/* Current role */}
         <motion.div
-          initial={{ opacity: 0, y: 30 }}
+          initial={{ opacity: 0, y: 10 }}
+          animate={{
+            opacity: isIdle ? 0.08 : 1,
+            y: isIdle ? 4 : 0,
+            filter: isIdle ? "blur(5px)" : "blur(0px)",
+          }}
+          transition={{ duration: 1.5, ease: "easeInOut" }}
+          className="
+            mb-6
+            inline-flex
+            items-center
+            gap-2
+            rounded-full
+            border
+            border-border
+            px-3
+            py-1.5
+            text-xs
+            text-foreground/60
+          "
+        >
+          <span className="h-1.5 w-1.5 rounded-full bg-[var(--green-bright)]" />
+          <span className="min-w-[9ch] text-[#4f8a5f]">{displayed}</span>
+          <span className="animate-pulse">|</span>
+        </motion.div>
+
+        {/* Name */}
+        <motion.h1
+          initial={{ opacity: 0, y: 20 }}
           animate={{
             opacity: 1,
             y: 0,
+            scale: isIdle ? 1.02 : 1,
           }}
           transition={{
-            duration: 0.8,
+            delay: 0.3,
+            duration: isIdle ? 1.8 : 0.6,
             ease: [0.16, 1, 0.3, 1],
           }}
-          className="mx-auto max-w-4xl text-center"
+          className="mb-3 font-['Cinzel'] text-5xl tracking-tight text-foreground md:text-7xl lg:text-8xl"
         >
+          Remus Kinilitan
+        </motion.h1>
+
+        <motion.h2
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.4, duration: 0.6 }}
+          className="font-['Cinzel'] text-xl text-foreground/60 md:text-2xl"
+        >
+          Aspiring Software Engineer
+        </motion.h2>
+      </div>
+
+      {/* =========================================================
+          BOTTOM BAR — links left, trail center, actions right
+         ========================================================= */}
+
+      <div className="relative z-10 mx-auto w-full max-w-1xl lg:mx-0 lg:pl-[0]">
+        <div className="flex flex-col items-center gap-10 lg:grid lg:grid-cols-[1fr_auto_1fr] lg:items-end">
           {/* =====================================================
-              CURRENT ROLE
+              LEFT — description + links
              ===================================================== */}
 
           <motion.div
-            initial={{ opacity: 0, y: 10 }}
-            animate={{
-              opacity: isIdle ? 0.08 : 1,
-              y: isIdle ? 4 : 0,
-              filter: isIdle ? "blur(5px)" : "blur(0px)",
-            }}
-            transition={{
-              duration: 1.5,
-              ease: "easeInOut",
-            }}
-            className="
-              mb-6
-              inline-flex
-              items-center
-              gap-2
-              rounded-full
-              border
-              border-border
-              px-3
-              py-1.5
-              text-xs
-              text-foreground/60
-            "
-          >
-            <span className="h-1.5 w-1.5 rounded-full bg-[var(--green-bright)]" />
-
-            <span className="min-w-[9ch] text-[#4f8a5f]">
-              {displayed}
-            </span>
-
-            <span className="animate-pulse">|</span>
-          </motion.div>
-
-          {/* =====================================================
-              NAME — ALWAYS THE FOCUS
-             ===================================================== */}
-
-          <motion.h1
             initial={{ opacity: 0, y: 20 }}
             animate={{
-              opacity: 1,
-              y: 0,
-              scale: isIdle ? 1.025 : 1,
-              filter: "blur(0px)",
-            }}
-            transition={{
-              delay: 0.3,
-              duration: isIdle ? 1.8 : 0.6,
-              ease: [0.16, 1, 0.3, 1],
-            }}
-            className="
-              mb-3
-              font-['Cinzel']
-              text-5xl
-              tracking-tight
-              text-foreground
-              md:text-6xl
-              lg:text-7xl
-            "
-          >
-            Remus Kinilitan
-          </motion.h1>
-
-          {/* =====================================================
-              TITLE — ALWAYS THE FOCUS
-             ===================================================== */}
-
-          <motion.h2
-            initial={{ opacity: 0, y: 20 }}
-            animate={{
-              opacity: 1,
-              y: 0,
-              scale: isIdle ? 1.02 : 1,
-              filter: "blur(0px)",
-            }}
-            transition={{
-              delay: 0.4,
-              duration: isIdle ? 1.8 : 0.6,
-              ease: [0.16, 1, 1, 1],
-            }}
-            className="
-              mb-6
-              font-['Cinzel']
-              text-xl
-              text-foreground/60
-              md:text-2xl
-            "
-          >
-            Aspiring Software Engineer
-          </motion.h2>
-
-          {/* =====================================================
-              SECONDARY CONTENT
-             ===================================================== */}
-
-          <motion.div
-            animate={{
               opacity: isIdle ? 0.08 : 1,
-              filter: isIdle ? "blur(5px)" : "blur(0px)",
               y: isIdle ? 6 : 0,
+              filter: isIdle ? "blur(5px)" : "blur(0px)",
             }}
-            transition={{
-              duration: 1.6,
-              ease: "easeInOut",
-            }}
+            transition={{ duration: 1.6, ease: "easeInOut" }}
+            className="max-w-xl text-center lg:text-left"
           >
-            {/* Description */}
-
             <motion.p
               initial={{ opacity: 0, y: 20 }}
-              animate={{
-                opacity: 1,
-                y: 0,
-              }}
-              transition={{
-                delay: 0.5,
-                duration: 0.6,
-              }}
-              className="
-                mx-auto
-                mb-10
-                max-w-2xl
-                text-lg
-                leading-relaxed
-                text-foreground/80
-              "
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.5, duration: 0.6 }}
+              className="mx-auto mb-6 max-w-2xl text-lg leading-relaxed text-foreground/80 lg:mx-0"
             >
               I build the way I ride — pick a direction, commit to the climb,
               adjust the route when the terrain changes. Fullstack developer
               working mostly in Angular, React, and Django, currently mapping
               out CareerLens as my thesis.
             </motion.p>
-
-            {/* Actions */}
-
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{
-                opacity: 1,
-                y: 0,
-              }}
-              transition={{
-                delay: 0.6,
-                duration: 0.6,
-              }}
-              className="
-                mb-10
-                flex
-                flex-col
-                items-center
-                justify-center
-                gap-4
-                sm:flex-row
-              "
-            >
-              <motion.a
-                href="#contact"
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-                className="
-                  w-full
-                  rounded-lg
-                  border
-                  border-white/10
-                  bg-foreground
-                  px-8
-                  py-4
-                  text-center
-                  text-sm
-                  font-medium
-                  text-background
-                  transition-colors
-                  duration-200
-                  hover:bg-white
-                  hover:text-black
-                  sm:w-auto
-                "
-              >
-                Send a Signal
-              </motion.a>
-
-              <motion.a
-                href={Resume}
-                target="_blank"
-                rel="noopener noreferrer"
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-                className="
-                  w-full
-                  rounded-lg
-                  border
-                  border-[var(--green-accent)]
-                  px-8
-                  py-4
-                  text-center
-                  text-sm
-                  font-medium
-                  text-foreground
-                  transition-colors
-                  duration-200
-                  hover:bg-white
-                  hover:text-black
-                  sm:w-auto
-                "
-              >
-                View Resume
-              </motion.a>
-            </motion.div>
-
-            {/* Social links */}
-
-            <motion.div
-              initial={{ opacity: 0 }}
-              animate={{
-                opacity: 1,
-              }}
-              transition={{
-                delay: 0.7,
-                duration: 0.6,
-              }}
-              className="
-                flex
-                items-center
-                justify-center
-                gap-6
-              "
-            >
-              {socialLinks.map((social, index) => {
-                const Icon = social.icon;
-
-                return (
-                  <motion.a
-                    key={social.label}
-                    href={social.href}
-                    aria-label={social.label}
-                    initial={{
-                      opacity: 0,
-                      y: 20,
-                    }}
-                    animate={{
-                      opacity: 1,
-                      y: 0,
-                    }}
-                    transition={{
-                      delay: 0.7 + index * 0.1,
-                      duration: 0.3,
-                    }}
-                    whileHover={{
-                      scale: 1.1,
-                      y: -2,
-                    }}
-                    className="
-                      group
-                      relative
-                      p-3
-                      text-foreground
-                      transition-colors
-                      duration-300
-                      hover:text-primary
-                    "
-                  >
-                    <Icon size={24} strokeWidth={1.8} />
-
-                    <span
-                      className="
-                        absolute
-                        inset-0
-                        -z-10
-                        rounded-lg
-                        bg-primary
-                        blur-lg
-                        opacity-0
-                        transition-opacity
-                        duration-300
-                        group-hover:opacity-40
-                      "
-                    />
-                  </motion.a>
-                );
-              })}
-            </motion.div>
           </motion.div>
-        </motion.div>
+
+          {/* =====================================================
+              CENTER — start the trail
+             ===================================================== */}
+
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{
+              opacity: isIdle ? 0.08 : 1,
+              y: isIdle ? 6 : 0,
+              filter: isIdle ? "blur(5px)" : "blur(0px)",
+            }}
+            transition={{ duration: 1.6, ease: "easeInOut" }}
+            className="flex items-center justify-center gap-6 lg:justify-start"
+          >
+            {socialLinks.map((social, index) => {
+              const Icon = social.icon;
+
+              return (
+                <motion.a
+                  key={social.label}
+                  href={social.href}
+                  aria-label={social.label}
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: 0.7 + index * 0.1, duration: 0.3 }}
+                  whileHover={{ scale: 1.1, y: -2 }}
+                  className="group relative p-3 text-foreground transition-colors duration-300 hover:text-primary"
+                >
+                  <Icon size={24} strokeWidth={1.8} />
+                  <span className="absolute inset-0 -z-10 rounded-lg bg-primary opacity-0 blur-lg transition-opacity duration-300 group-hover:opacity-40" />
+                </motion.a>
+              );
+            })}
+          </motion.div>
+
+          {/* =====================================================
+              RIGHT — actions
+             ===================================================== */}
+
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.6, duration: 0.6 }}
+            className="mb-10 flex flex-row items-center lg:ml-auto justify-center gap-3 sm:gap-4"
+          >
+            <motion.a
+              href="#contact"
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+              className="
+      inline-flex
+      min-w-[130px]
+      items-center
+      justify-center
+      rounded-lg
+      border
+      border-white/10
+      bg-foreground
+      px-5
+      py-3
+      text-center
+      text-sm
+      font-medium
+      text-background
+      transition-colors
+      duration-200
+      hover:bg-white
+      hover:text-black
+      sm:min-w-[150px]
+      sm:px-8
+      sm:py-4
+    "
+            >
+              Send a Signal
+            </motion.a>
+
+            <motion.a
+              href={Resume}
+              target="_blank"
+              rel="noopener noreferrer"
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+              className="
+      inline-flex
+      min-w-[130px]
+      items-center
+      justify-center
+      rounded-lg
+      border
+      border-[var(--green-accent)]
+      px-5
+      py-3
+      text-center
+      text-sm
+      font-medium
+      text-foreground
+      transition-colors
+      duration-200
+      hover:bg-white
+      hover:text-black
+      sm:min-w-[150px]
+      sm:px-8
+      sm:py-4
+    "
+            >
+              View Resume
+            </motion.a>
+          </motion.div>
+        </div>
       </div>
-
-      {/* =========================================================
-          TRAILHEAD
-         ========================================================= */}
-
-      <motion.button
-        type="button"
-        onClick={scrollToAbout}
-        initial={{
-          opacity: 0,
-          y: -20,
-        }}
-        animate={{
-          opacity: isIdle ? 0.08 : 1,
-          y: isIdle ? 8 : 0,
-          filter: isIdle ? "blur(4px)" : "blur(0px)",
-        }}
-        transition={{
-          delay: 1,
-          duration: 1.2,
-          ease: "easeInOut",
-        }}
-        className="
-          group
-          absolute
-          bottom-8
-          left-1/2
-          flex
-          -translate-x-1/2
-          cursor-pointer
-          flex-col
-          items-center
-          gap-2
-          text-primary
-        "
-      >
-        <span
-          className="
-            text-xs
-            uppercase
-            tracking-[0.2em]
-            text-foreground/40
-          "
-        >
-          Trailhead
-        </span>
-
-        <motion.div
-          animate={{
-            y: isIdle ? 0 : [0, 8, 0],
-          }}
-          transition={{
-            duration: 2,
-            repeat: isIdle ? 0 : Infinity,
-            ease: "easeInOut",
-          }}
-        >
-          <ArrowDown size={28} />
-        </motion.div>
-
-        <span
-          className="
-            absolute
-            inset-0
-            rounded-full
-            bg-[var(--green-accent)]/20
-            blur-lg
-            opacity-0
-            transition-opacity
-            duration-300
-            group-hover:opacity-100
-          "
-        />
-      </motion.button>
     </section>
   );
 }

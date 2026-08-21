@@ -61,10 +61,7 @@ export function Navigation() {
   const toggleTheme = () => {
     const isDark = document.documentElement.classList.toggle("dark");
 
-    localStorage.setItem(
-      "theme",
-      isDark ? "dark" : "light",
-    );
+    localStorage.setItem("theme", isDark ? "dark" : "light");
   };
 
   return (
@@ -96,16 +93,13 @@ export function Navigation() {
           >
             <div className="mx-auto max-w-7xl px-6 lg:px-8">
               <div className="flex h-20 items-center justify-between">
-
                 {/* =====================================================
                     LOGO
                    ===================================================== */}
 
                 <motion.a
                   href="#home"
-                  onClick={(e) =>
-                    handleNavClick(e, "#home")
-                  }
+                  onClick={(e) => handleNavClick(e, "#home")}
                   className="relative flex items-center gap-2"
                   whileHover={{
                     scale: 1.05,
@@ -118,7 +112,7 @@ export function Navigation() {
                     REMUS
                   </span>
 
-                  <MoonPhase size={10} />
+                  <MoonPhase size={20} />
                 </motion.a>
 
                 {/* =====================================================
@@ -130,9 +124,7 @@ export function Navigation() {
                     <motion.a
                       key={item.href}
                       href={item.href}
-                      onClick={(e) =>
-                        handleNavClick(e, item.href)
-                      }
+                      onClick={(e) => handleNavClick(e, item.href)}
                       className="
                         group
                         relative
@@ -184,7 +176,6 @@ export function Navigation() {
                    ===================================================== */}
 
                 <div className="hidden items-center gap-2 md:flex">
-
                   {/* Theme */}
 
                   <motion.button
@@ -213,47 +204,6 @@ export function Navigation() {
                   >
                     <Moon size={16} />
                   </motion.button>
-
-                  {/* CTA */}
-
-                  <motion.a
-                    href="#contact"
-                    onClick={(e) =>
-                      handleNavClick(e, "#contact")
-                    }
-                    className="
-                      rounded-lg
-                      border
-                      border-white/10
-                      bg-foreground
-                      px-6
-                      py-2.5
-                      text-sm
-                      font-medium
-                      text-background
-                      transition-colors
-                      duration-200
-                      hover:bg-white
-                      hover:text-black
-                    "
-                    initial={{
-                      opacity: 0,
-                      x: 20,
-                    }}
-                    animate={{
-                      opacity: 1,
-                      x: 0,
-                    }}
-                    transition={{
-                      delay: 0.6,
-                      duration: 0.4,
-                    }}
-                    whileHover={{
-                      scale: 1.05,
-                    }}
-                  >
-                    Send a Signal
-                  </motion.a>
                 </div>
 
                 {/* =====================================================
@@ -261,11 +211,7 @@ export function Navigation() {
                    ===================================================== */}
 
                 <button
-                  onClick={() =>
-                    setIsMobileMenuOpen(
-                      !isMobileMenuOpen,
-                    )
-                  }
+                  onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
                   className="
                     rounded-lg
                     p-2
@@ -276,11 +222,7 @@ export function Navigation() {
                   "
                   aria-label="Toggle menu"
                 >
-                  {isMobileMenuOpen ? (
-                    <X size={24} />
-                  ) : (
-                    <Menu size={24} />
-                  )}
+                  {isMobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
                 </button>
               </div>
             </div>
@@ -325,14 +267,11 @@ export function Navigation() {
             "
           >
             <div className="flex flex-col gap-2 p-8 pt-24">
-
               {navItems.map((item, index) => (
                 <motion.a
                   key={item.href}
                   href={item.href}
-                  onClick={(e) =>
-                    handleNavClick(e, item.href)
-                  }
+                  onClick={(e) => handleNavClick(e, item.href)}
                   className="
                     rounded-lg
                     px-4
@@ -364,6 +303,18 @@ export function Navigation() {
               {/* Mobile Theme */}
 
               <motion.button
+                initial={{
+                  opacity: 0,
+                  x: 50,
+                }}
+                animate={{
+                  opacity: 1,
+                  x: 0,
+                }}
+                transition={{
+                  delay: navItems.length * 0.15,
+                  duration: 0.3,
+                }}
                 className="
                   flex
                   h-10
@@ -390,44 +341,6 @@ export function Navigation() {
               </motion.button>
 
               {/* Mobile CTA */}
-
-              <motion.a
-                href="#contact"
-                onClick={(e) =>
-                  handleNavClick(e, "#contact")
-                }
-                className="
-                  mt-4
-                  rounded-lg
-                  border
-                  border-white/10
-                  bg-black
-                  px-4
-                  py-3
-                  text-center
-                  text-lg
-                  font-medium
-                  text-white
-                  transition-colors
-                  duration-200
-                  hover:bg-white
-                  hover:text-black
-                "
-                initial={{
-                  opacity: 0,
-                  x: 50,
-                }}
-                animate={{
-                  opacity: 1,
-                  x: 0,
-                }}
-                transition={{
-                  delay: navItems.length * 0.1,
-                  duration: 0.3,
-                }}
-              >
-                Send a Signal
-              </motion.a>
             </div>
           </motion.div>
         )}
