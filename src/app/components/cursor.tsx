@@ -1,12 +1,12 @@
 import { useEffect, useRef } from "react";
 
 const colors = [
-  "#00d9ff",
-  "#00d9ff",
-  "#00d9ff",
-  "#4a5fd9",
-  "#4a5fd9",
-  "#4a5fd9",
+  "#6fbf7a",
+  "#6fbf7a",
+  "#6fbf7a",
+  "#4f8a5f",
+  "#4f8a5f",
+  "#4f8a5f",
 ];
 const DOT_COUNT = 50;
 
