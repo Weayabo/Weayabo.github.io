@@ -1,16 +1,226 @@
-import { useState, useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import { motion } from "motion/react";
-import { Mail, MapPin, Phone, Send } from "lucide-react";
+import {
+  ArrowUpRight,
+  Check,
+  Compass,
+  Github,
+  Instagram,
+  Linkedin,
+  Mail,
+  Send,
+  Sparkles,
+} from "lucide-react";
+
+type ContactRoute = {
+  label: string;
+  value: string;
+  href: string;
+  icon: typeof Mail;
+};
+
+const contactRoutes: ContactRoute[] = [
+  {
+    label: "Email",
+    value: "remuszamora@gmail.com",
+    href: "mailto:remuszamora@gmail.com",
+    icon: Mail,
+  },
+  {
+    label: "GitHub",
+    value: "Weayabo",
+    href: "https://github.com/Weayabo",
+    icon: Github,
+  },
+  {
+    label: "LinkedIn",
+    value: "Remus Zamora",
+    href: "https://www.linkedin.com/in/remus-zamora-507768374/",
+    icon: Linkedin,
+  },
+  {
+    label: "Instagram",
+    value: "@re.myths",
+    href: "https://www.instagram.com/re.myths/",
+    icon: Instagram,
+  },
+];
+
+const contourLines = [
+  {
+    cx: "50%",
+    cy: "50%",
+    rx: "44%",
+    ry: "38%",
+  },
+  {
+    cx: "50%",
+    cy: "50%",
+    rx: "36%",
+    ry: "31%",
+  },
+  {
+    cx: "50%",
+    cy: "50%",
+    rx: "28%",
+    ry: "24%",
+  },
+  {
+    cx: "50%",
+    cy: "50%",
+    rx: "20%",
+    ry: "17%",
+  },
+  {
+    cx: "50%",
+    cy: "50%",
+    rx: "12%",
+    ry: "10%",
+  },
+];
+
+function WaypointVisual() {
+  return (
+    <div className="relative mx-auto aspect-square w-full max-w-[460px]">
+      {/* Outer atmosphere */}
+      <motion.div
+        className="absolute inset-[12%] rounded-full bg-[var(--green-accent)]/[0.025] blur-3xl"
+        animate={{
+          scale: [1, 1.08, 1],
+          opacity: [0.4, 0.7, 0.4],
+        }}
+        transition={{
+          duration: 6,
+          repeat: Infinity,
+          ease: "easeInOut",
+        }}
+      />
+
+      {/* Topographic rings */}
+      <svg
+        viewBox="0 0 500 500"
+        className="absolute inset-0 h-full w-full"
+        fill="none"
+        aria-hidden="true"
+      >
+        {contourLines.map((line, index) => (
+          <ellipse
+            key={index}
+            cx={line.cx}
+            cy={line.cy}
+            rx={line.rx}
+            ry={line.ry}
+            stroke="var(--green-accent)"
+            strokeOpacity={0.06 + index * 0.01}
+            strokeWidth="1"
+          />
+        ))}
+
+        {/* Route */}
+        <motion.path
+          d="
+            M 55 395
+            C 105 350, 105 280, 165 290
+            C 220 300, 210 365, 275 350
+            C 335 336, 310 245, 365 215
+            C 400 196, 420 170, 445 105
+          "
+          stroke="var(--green-accent)"
+          strokeOpacity="0.45"
+          strokeWidth="1.5"
+          strokeDasharray="5 7"
+          initial={{ pathLength: 0 }}
+          whileInView={{ pathLength: 1 }}
+          viewport={{ once: true }}
+          transition={{
+            duration: 2,
+            ease: "easeInOut",
+          }}
+        />
+
+        {/* Small route branches */}
+        <path
+          d="M 165 290 C 135 250, 150 210, 125 170"
+          stroke="var(--green-accent)"
+          strokeOpacity="0.12"
+          strokeWidth="1"
+          strokeDasharray="3 8"
+        />
+
+        <path
+          d="M 275 350 C 300 380, 350 395, 375 430"
+          stroke="var(--green-accent)"
+          strokeOpacity="0.12"
+          strokeWidth="1"
+          strokeDasharray="3 8"
+        />
+      </svg>
+
+      {/* Start point */}
+      <div className="absolute bottom-[18%] left-[9%]">
+        <div className="h-2 w-2 rounded-full bg-foreground/20" />
+        <span className="absolute left-4 top-[-4px] whitespace-nowrap text-[8px] uppercase tracking-[0.2em] text-foreground/20">
+          Start
+        </span>
+      </div>
+
+      {/* Destination */}
+      <div className="absolute right-[8%] top-[15%]">
+        <motion.div
+          animate={{
+            scale: [1, 1.12, 1],
+          }}
+          transition={{
+            duration: 2.5,
+            repeat: Infinity,
+            ease: "easeInOut",
+          }}
+          className="absolute -inset-3 rounded-full border border-[var(--green-accent)]/20"
+        />
+
+        <div className="relative flex h-8 w-8 items-center justify-center rounded-full border border-[var(--green-accent)]/40 bg-background">
+          <div className="h-2.5 w-2.5 rounded-full bg-[var(--green-accent)]" />
+        </div>
+
+        <span className="absolute left-10 top-1 whitespace-nowrap text-[8px] uppercase tracking-[0.2em] text-[var(--green-accent)]/60">
+          You are here
+        </span>
+      </div>
+
+      {/* Compass */}
+      <motion.div
+        animate={{ rotate: [0, 4, -4, 0] }}
+        transition={{
+          duration: 8,
+          repeat: Infinity,
+          ease: "easeInOut",
+        }}
+        className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2"
+      >
+        <div className="flex h-20 w-20 items-center justify-center rounded-full border border-border bg-background/80 backdrop-blur-sm">
+          <Compass
+            size={34}
+            strokeWidth={1}
+            className="text-[var(--green-accent)]/50"
+          />
+        </div>
+      </motion.div>
+    </div>
+  );
+}
 
 export function ContactSection() {
   const [isVisible, setIsVisible] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [statusMessage, setStatusMessage] = useState("");
+
   const [formData, setFormData] = useState({
     name: "",
     email: "",
     subject: "",
     message: "",
   });
+
   const sectionRef = useRef<HTMLElement>(null);
 
   useEffect(() => {
@@ -20,7 +230,9 @@ export function ContactSection() {
           setIsVisible(true);
         }
       },
-      { threshold: 0.2 },
+      {
+        threshold: 0.15,
+      },
     );
 
     if (sectionRef.current) {
@@ -30,10 +242,18 @@ export function ContactSection() {
     return () => observer.disconnect();
   }, []);
 
-  const [statusMessage, setStatusMessage] = useState("");
+  const handleChange = (
+    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>,
+  ) => {
+    setFormData((prev) => ({
+      ...prev,
+      [e.target.name]: e.target.value,
+    }));
+  };
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+
     setIsSubmitting(true);
     setStatusMessage("");
 
@@ -47,269 +267,447 @@ export function ContactSection() {
       });
 
       if (res.ok) {
-        setStatusMessage("Message sent successfully!");
-        setFormData({ name: "", email: "", subject: "", message: "" });
+        setStatusMessage("Your message has reached the trail.");
+        setFormData({
+          name: "",
+          email: "",
+          subject: "",
+          message: "",
+        });
       } else {
-        setStatusMessage("Something went wrong, please try again.");
-        console.error(await res.text());
+        setStatusMessage("Something went wrong. Please try again.");
       }
     } catch (error) {
       console.error(error);
-      setStatusMessage("Failed to send message. Please try later.");
+      setStatusMessage("The message couldn't be sent. Please try again later.");
     } finally {
       setIsSubmitting(false);
     }
   };
 
-  const handleChange = (
-    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>,
-  ) => {
-    setFormData((prev) => ({
-      ...prev,
-      [e.target.name]: e.target.value,
-    }));
-  };
-
-  const contactInfo = [
-    {
-      icon: Mail,
-      label: "Email",
-      value: "remuszamora@gmail.com",
-      href: "mailto:remuszamora@gmail.com",
-    },
-    {
-      icon: Phone,
-      label: "Phone",
-      value: "+63 969 142 4672",
-      href: "tel:+639691424672",
-    },
-    {
-      icon: MapPin,
-      label: "Location",
-      value: "San Fernando. Pampanga, Philippines",
-      href: "https://maps.app.goo.gl/hz7pq2WP9gaGiahZ7",
-    },
-  ];
-
   return (
     <section
       id="contact"
       ref={sectionRef}
-      className="relative py-24 md:py-32 overflow-hidden"
+      className="relative overflow-hidden bg-background"
     >
-      {/* Background */}
-      <div className="absolute inset-0 bg-gradient-to-b from-background via-background/50 to-background" />
-      <div className="absolute top-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-primary/50 to-transparent" />
+      {/* ============================================================
+          ATMOSPHERE
+          ============================================================ */}
 
-      {/* Animated Background Elements */}
-      <motion.div
-        className="absolute top-1/3 left-1/3 w-96 h-96 from-primary to-accent rounded-full blur-3xl"
-        animate={{
-          scale: [1, 1.3, 1],
-          opacity: [0.2, 0.4, 0.2],
-        }}
-        transition={{ duration: 10, repeat: Infinity, ease: "easeInOut" }}
-      />
+      <div className="pointer-events-none absolute inset-0">
+        {/* Top fade */}
+        <div className="absolute inset-x-0 top-0 h-32 bg-gradient-to-b from-background to-transparent" />
 
-      <div className="relative z-10 max-w-7xl mx-auto px-6 lg:px-8">
-        {/* Section Header */}
+        {/* Central atmosphere */}
         <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          animate={isVisible ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.6 }}
-          className="mb-16 text-center"
+          className="absolute left-1/2 top-1/2 h-[700px] w-[700px] -translate-x-1/2 -translate-y-1/2 rounded-full bg-[var(--green-accent)]/[0.018] blur-3xl"
+          animate={{
+            scale: [1, 1.1, 1],
+            opacity: [0.4, 0.7, 0.4],
+          }}
+          transition={{
+            duration: 10,
+            repeat: Infinity,
+            ease: "easeInOut",
+          }}
+        />
+
+        {/* Fine horizontal lines */}
+        <div className="absolute left-0 top-[20%] h-px w-full bg-gradient-to-r from-transparent via-[var(--green-accent)]/[0.05] to-transparent" />
+
+        <div className="absolute left-0 top-[80%] h-px w-full bg-gradient-to-r from-transparent via-[var(--green-accent)]/[0.05] to-transparent" />
+      </div>
+
+      <div className="relative z-10 mx-auto max-w-6xl px-4 py-10 lg:px-8 lg:py-10">
+        {/* ============================================================
+            INTRO
+            ============================================================ */}
+
+        <motion.div
+          initial={{
+            opacity: 0,
+            y: 35,
+          }}
+          animate={
+            isVisible
+              ? {
+                  opacity: 1,
+                  y: 0,
+                }
+              : {}
+          }
+          transition={{
+            duration: 0.9,
+            ease: [0.16, 1, 0.3, 1],
+          }}
+          className="mx-auto max-w-3xl text-center"
         >
-          <h2 className="text-4xl md:text-5xl mb-4 inline-block">
-            <span className="bg-foreground bg-clip-text text-transparent">
-              Get In Touch
+          <div className="mb-6 flex items-center justify-center gap-4">
+            <span className="h-px w-10 bg-[var(--green-accent)]/30" />
+
+            <span className="text-[10px] font-medium uppercase tracking-[0.3em] text-[var(--green-accent)] font-['Cinzel']">
+              Final waypoint
             </span>
+
+            <span className="h-px w-10 bg-[var(--green-accent)]/30" />
+          </div>
+
+          <h2 className="font-['Cinzel'] text-5xl tracking-tight text-foreground md:text-7xl">
+            The road doesn't
+            <span className="block text-foreground/25">have to end here.</span>
           </h2>
-          <div className="h-1 w-24 bg-foreground mx-auto rounded-full" />
-          <p className="mt-6 text-lg text-foreground/100 max-w-2xl mx-auto">
-            Have a project in mind? Let's work together to create something
-            amazing
+
+          <p className="mx-auto mt-6 max-w-xl text-base leading-8 text-foreground/45 md:text-lg">
+            If you've made it this far, perhaps our paths are meant to cross.
+            Have an opportunity, a project, or simply something worth talking
+            about? Send a message.
           </p>
         </motion.div>
 
-        <div className="grid lg:grid-cols-2 gap-12">
-          {/* Contact Info */}
+        {/* ============================================================
+            MAIN CONTACT AREA
+            ============================================================ */}
+
+        <div className="mt-8 grid items-center gap-12 lg:grid-cols-[0.9fr_1.1fr] lg:gap-20">
+          {/* ----------------------------------------------------------
+              WAYPOINT
+              ---------------------------------------------------------- */}
+
           <motion.div
-            initial={{ opacity: 0, x: -50 }}
-            animate={isVisible ? { opacity: 1, x: 0 } : {}}
-            transition={{ delay: 0.2, duration: 0.6 }}
-            className="space-y-8"
+            initial={{
+              opacity: 0,
+              x: -40,
+            }}
+            animate={
+              isVisible
+                ? {
+                    opacity: 1,
+                    x: 0,
+                  }
+                : {}
+            }
+            transition={{
+              duration: 0.9,
+              delay: 0.15,
+              ease: [0.16, 1, 0.3, 1],
+            }}
           >
-            <div>
-              <h3 className="text-2xl md:text-3xl text-foreground mb-6">
-                Let's Talk
-              </h3>
-              <p className="text-lg text-foreground/100 leading-relaxed mb-8">
-                I'm always interested in hearing about new projects and
-                opportunities. Whether you have a question or just want to say
-                hi, feel free to reach out!
-              </p>
-            </div>
+            <WaypointVisual />
 
-            <div className="space-y-6">
-              {contactInfo.map((info, index) => (
-                <motion.a
-                  key={info.label}
-                  href={info.href}
-                  initial={{ opacity: 0, x: -30 }}
-                  animate={isVisible ? { opacity: 1, x: 0 } : {}}
-                  transition={{ delay: 0.3 + index * 0.1, duration: 0.4 }}
-                  className="flex items-center gap-4 p-4 rounded-xl bg-background/50 border border-primary/50 hover:border-primary/30 hover:bg-primary/10 transition-all duration-300 group"
-                >
-                  <div className="p-3 bg-gradient-to-br from-primary/20 to-accent/20 rounded-lg group-hover:from-primary/30 group-hover:to-accent/30 transition-all duration-300">
-                    <info.icon className="text-foreground" size={24} />
-                  </div>
-                  <div>
-                    <div className="text-sm text-foreground/60 group-hover:text-primary transition-colors duration-300">
-                      {info.label}
-                    </div>
-                    <div className="text-foreground group-hover:text-primary transition-colors duration-300">
-                      {info.value}
-                    </div>
-                  </div>
-                </motion.a>
-              ))}
-            </div>
+            {/* Contact routes */}
+            <div className="mt-6 grid grid-cols-2 gap-3">
+              {contactRoutes.map((route, index) => {
+                const Icon = route.icon;
 
-            {/* Social Links */}
-            <motion.div
-              initial={{ opacity: 0, y: 30 }}
-              animate={isVisible ? { opacity: 1, y: 0 } : {}}
-              transition={{ delay: 0.7, duration: 0.6 }}
-              className="pt-8"
-            >
-              <p className="text-foreground/60 mb-4">
-                Follow me on social media
-              </p>
-              <div className="flex gap-4 flex-wrap">
-                {["GitHub", "LinkedIn", "Instagram", "Facebook"].map(
-                  (social, index) => (
-                    <motion.a
-                      key={social}
-                      href={
-                        social === "GitHub"
-                          ? "https://github.com/Weayabo"
-                          : social === "LinkedIn"
-                            ? "https://www.linkedin.com/in/remus-zamora-507768374/"
-                            : social === "Instagram"
-                              ? "https://www.instagram.com/re.myths/"
-                              : social === "Facebook"
-                                ? "https://www.facebook.com/remuszamora"
-                                : "#"
-                      }
-                      whileHover={{ scale: 1.1, y: -5 }}
-                      className="px-6 py-3 bg-gradient-to-br from-background/80 to-background/40 border border-primary/50 rounded-lg text-foreground/80 hover:text-primary hover:border-primary/50 transition-all duration-300"
-                    >
-                      {social}
-                    </motion.a>
-                  ),
-                )}
-              </div>
-            </motion.div>
+                return (
+                  <motion.a
+                    key={route.label}
+                    href={route.href}
+                    target={
+                      route.href.startsWith("http") ? "_blank" : undefined
+                    }
+                    rel={
+                      route.href.startsWith("http")
+                        ? "noopener noreferrer"
+                        : undefined
+                    }
+                    initial={{
+                      opacity: 0,
+                      y: 15,
+                    }}
+                    animate={
+                      isVisible
+                        ? {
+                            opacity: 1,
+                            y: 0,
+                          }
+                        : {}
+                    }
+                    transition={{
+                      delay: 0.35 + index * 0.08,
+                      duration: 0.5,
+                    }}
+                    className="group flex items-center gap-3 rounded-xl border border-border bg-card/20 p-3 transition-all duration-300 hover:border-[var(--green-accent)]/25 hover:bg-[var(--green-accent)]/[0.03]"
+                  >
+                    <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg border border-border">
+                      <Icon
+                        size={15}
+                        strokeWidth={1.4}
+                        className="text-foreground/35 transition-colors group-hover:text-[var(--green-accent)]"
+                      />
+                    </div>
+
+                    <div className="min-w-0">
+                      <p className="text-[8px] uppercase tracking-[0.2em] text-foreground/25">
+                        {route.label}
+                      </p>
+
+                      <p className="mt-1 truncate text-[11px] text-foreground/55">
+                        {route.value}
+                      </p>
+                    </div>
+
+                    <ArrowUpRight
+                      size={12}
+                      className="ml-auto shrink-0 text-foreground/15 transition-all group-hover:-translate-y-0.5 group-hover:translate-x-0.5 group-hover:text-[var(--green-accent)]"
+                    />
+                  </motion.a>
+                );
+              })}
+            </div>
           </motion.div>
 
-          {/* Contact Form */}
+          {/* ----------------------------------------------------------
+              MESSAGE FORM
+              ---------------------------------------------------------- */}
+
           <motion.div
-            initial={{ opacity: 0, x: 50 }}
-            animate={isVisible ? { opacity: 1, x: 0 } : {}}
-            transition={{ delay: 0.3, duration: 0.6 }}
+            initial={{
+              opacity: 0,
+              x: 40,
+            }}
+            animate={
+              isVisible
+                ? {
+                    opacity: 1,
+                    x: 0,
+                  }
+                : {}
+            }
+            transition={{
+              duration: 0.9,
+              delay: 0.25,
+              ease: [0.16, 1, 0.3, 1],
+            }}
           >
-            <form onSubmit={handleSubmit} className="space-y-6">
-              <div className="relative group">
-                <input
-                  type="text"
-                  name="name"
-                  value={formData.name}
-                  onChange={handleChange}
-                  required
-                  placeholder="Your Name"
-                  className="w-full px-6 py-4 bg-background/50 border border-primary/10 rounded-xl text-foreground placeholder-foreground/40 focus:outline-none focus:border-primary/50 focus:bg-background/20 transition-all duration-300"
-                />
-                <div className="absolute inset-0 bg-gradient-to-r from-primary/5 to-accent/5 rounded-xl opacity-0 group-focus-within:opacity-100 transition-opacity duration-300 -z-10" />
+            <div className="relative overflow-hidden rounded-2xl border border-border bg-card/20">
+              {/* Form header */}
+              <div className="border-b border-border px-6 py-5 md:px-8">
+                <div className="flex items-center justify-between">
+                  <div>
+                    <div className="flex items-center gap-2">
+                      <Sparkles
+                        size={13}
+                        strokeWidth={1.5}
+                        className="text-[var(--green-accent)]"
+                      />
+
+                      <span className="text-[9px] uppercase tracking-[0.25em] text-[var(--green-accent)]">
+                        Send a signal
+                      </span>
+                    </div>
+
+                    <h3 className="mt-2 font-['Cinzel'] text-2xl text-foreground md:text-3xl">
+                      Start a conversation
+                    </h3>
+                  </div>
+
+                  <span className="font-mono text-[9px] tracking-[0.2em] text-foreground/15">
+                    01 / 01
+                  </span>
+                </div>
               </div>
 
-              <div className="relative group">
-                <input
-                  type="email"
-                  name="email"
-                  value={formData.email}
-                  onChange={handleChange}
-                  required
-                  placeholder="Your Email"
-                  className="w-full px-6 py-4 bg-background/50 border border-primary/10 rounded-xl text-foreground placeholder-foreground/40 focus:outline-none focus:border-primary/50 focus:bg-background/20 transition-all duration-300"
-                />
-                <div className="absolute inset-0 bg-gradient-to-r from-primary/5 to-accent/5 rounded-xl opacity-0 group-focus-within:opacity-100 transition-opacity duration-300 -z-10" />
-              </div>
+              {/* Form */}
+              <form onSubmit={handleSubmit} className="space-y-5 p-6 md:p-8">
+                <div className="grid gap-5 sm:grid-cols-2">
+                  <Field
+                    label="Name"
+                    name="name"
+                    value={formData.name}
+                    onChange={handleChange}
+                    placeholder="Your name"
+                  />
 
-              <div className="relative group">
-                <input
-                  type="text"
+                  <Field
+                    label="Email"
+                    name="email"
+                    type="email"
+                    value={formData.email}
+                    onChange={handleChange}
+                    placeholder="you@example.com"
+                  />
+                </div>
+
+                <Field
+                  label="Subject"
                   name="subject"
                   value={formData.subject}
                   onChange={handleChange}
-                  required
-                  placeholder="Subject"
-                  className="w-full px-6 py-4 bg-background/50 border border-primary/10 rounded-xl text-foreground placeholder-foreground/40 focus:outline-none focus:border-primary/50 focus:bg-background/20 transition-all duration-300"
+                  placeholder="What are we talking about?"
                 />
-                <div className="absolute inset-0 bg-gradient-to-r from-primary/5 to-accent/5 rounded-xl opacity-0 group-focus-within:opacity-100 transition-opacity duration-300 -z-10" />
-              </div>
 
-              <div className="relative group">
-                <textarea
-                  name="message"
-                  value={formData.message}
-                  onChange={handleChange}
-                  required
-                  placeholder="Your Message"
-                  rows={6}
-                  className="w-full px-6 py-4 bg-background/50 border border-primary/10 rounded-xl text-foreground placeholder-foreground/40 focus:outline-none focus:border-primary/50 focus:bg-background/20 transition-all duration-300 resize-none"
-                />
-                <div className="absolute inset-0 bg-gradient-to-r from-primary/5 to-accent/5 rounded-xl opacity-0 group-focus-within:opacity-100 transition-opacity duration-300 -z-10" />
-              </div>
+                <div>
+                  <label
+                    htmlFor="message"
+                    className="mb-2 block text-[9px] uppercase tracking-[0.2em] text-foreground/30"
+                  >
+                    Message
+                  </label>
 
-              <motion.button
-                type="submit"
-                disabled={isSubmitting}
-                className="relative w-full px-8 py-4 rounded-xl overflow-hidden group disabled:opacity-50 disabled:cursor-not-allowed"
-                whileHover={!isSubmitting ? { scale: 1.02 } : {}}
-                whileTap={!isSubmitting ? { scale: 0.98 } : {}}
-              >
-                <div className="absolute inset-0 bg-accent" />
-                <div className="absolute inset-0 bg-gradient-to-r from-accent to-primary opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-                <span className="relative text-foreground font-medium flex items-center justify-center gap-2">
-                  {isSubmitting ? (
-                    <>
-                      <motion.div
-                        animate={{ rotate: 360 }}
-                        transition={{
-                          duration: 1,
-                          repeat: Infinity,
-                          ease: "linear",
-                        }}
-                        className="w-5 h-5 border-2 border-[#0A0E27] border-t-transparent rounded-full"
-                      />
-                      Sending...
-                    </>
-                  ) : (
-                    <>
-                      Send Message
-                      <Send size={20} />
-                    </>
-                  )}
-                </span>
-                <div className="absolute inset-0 shadow-[0_0_30px_rgba(0,217,255,0.6)] opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-              </motion.button>
-              {statusMessage && (
-                <p className="text-sm text-[#00D9FF] mt-2">{statusMessage}</p>
-              )}
-            </form>
+                  <textarea
+                    id="message"
+                    name="message"
+                    value={formData.message}
+                    onChange={handleChange}
+                    required
+                    rows={6}
+                    placeholder="Tell me a little about it..."
+                    className="
+                      w-full resize-none rounded-xl
+                      border border-border
+                      bg-background/40
+                      px-4 py-3.5
+                      text-sm text-foreground
+                      placeholder:text-foreground/20
+                      outline-none
+                      transition-all duration-300
+                      focus:border-[var(--green-accent)]/40
+                      focus:bg-[var(--green-accent)]/[0.015]
+                    "
+                  />
+                </div>
+
+                <div className="flex flex-col gap-4 border-t border-border pt-5 sm:flex-row sm:items-center sm:justify-between">
+                  <div className="flex items-center gap-2 text-foreground/20">
+                    <div className="h-1.5 w-1.5 rounded-full bg-[var(--green-accent)]" />
+
+                    <span className="text-[9px] uppercase tracking-[0.18em]">
+                      Open to opportunities
+                    </span>
+                  </div>
+
+                  <motion.button
+                    type="submit"
+                    disabled={isSubmitting}
+                    whileHover={
+                      !isSubmitting
+                        ? {
+                            y: -2,
+                          }
+                        : {}
+                    }
+                    whileTap={
+                      !isSubmitting
+                        ? {
+                            scale: 0.98,
+                          }
+                        : {}
+                    }
+                    className="
+                      inline-flex items-center justify-center gap-2
+                      rounded-xl
+                      bg-[var(--green-accent)]
+                      px-6 py-3
+                      text-sm font-medium
+                      text-white
+                      transition-all duration-300
+                      hover:bg-[var(--green-bright)]
+                      disabled:cursor-not-allowed
+                      disabled:opacity-50
+                    "
+                  >
+                    {isSubmitting ? (
+                      <>
+                        <motion.div
+                          animate={{
+                            rotate: 360,
+                          }}
+                          transition={{
+                            duration: 1,
+                            repeat: Infinity,
+                            ease: "linear",
+                          }}
+                          className="h-4 w-4 rounded-full border-2 border-white/40 border-t-white"
+                        />
+                        Sending
+                      </>
+                    ) : (
+                      <>
+                        Send Message
+                        <Send size={15} />
+                      </>
+                    )}
+                  </motion.button>
+                </div>
+
+                {statusMessage && (
+                  <motion.div
+                    initial={{
+                      opacity: 0,
+                      y: -5,
+                    }}
+                    animate={{
+                      opacity: 1,
+                      y: 0,
+                    }}
+                    className="flex items-center gap-2 text-xs text-[var(--green-bright)]"
+                  >
+                    <Check size={14} />
+                    {statusMessage}
+                  </motion.div>
+                )}
+              </form>
+            </div>
           </motion.div>
         </div>
       </div>
     </section>
+  );
+}
+
+/* ================================================================
+   FIELD
+   ================================================================ */
+
+function Field({
+  label,
+  name,
+  value,
+  onChange,
+  placeholder,
+  type = "text",
+}: {
+  label: string;
+  name: string;
+  value: string;
+  onChange: (
+    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>,
+  ) => void;
+  placeholder: string;
+  type?: string;
+}) {
+  return (
+    <div>
+      <label
+        htmlFor={name}
+        className="mb-2 block text-[9px] uppercase tracking-[0.2em] text-foreground/30"
+      >
+        {label}
+      </label>
+
+      <input
+        id={name}
+        type={type}
+        name={name}
+        value={value}
+        onChange={onChange}
+        required
+        placeholder={placeholder}
+        className="
+          w-full rounded-xl
+          border border-border
+          bg-background/40
+          px-4 py-3.5
+          text-sm text-foreground
+          placeholder:text-foreground/20
+          outline-none
+          transition-all duration-300
+          focus:border-[var(--green-accent)]/40
+          focus:bg-[var(--green-accent)]/[0.015]
+        "
+      />
+    </div>
   );
 }
