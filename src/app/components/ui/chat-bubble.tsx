@@ -1,34 +1,39 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { MessageCircle, X } from "lucide-react";
+import { useIdle } from "@/app/hooks/useIdle";
+import { AnimatePresence } from "motion/react";
 
 export function ChatBubble() {
   const [open, setOpen] = useState(false);
+  const isIdle = useIdle(10_000);
 
   return (
     <>
-      <button
-        onClick={() => setOpen(true)}
-        className="fixed bottom-8 left-6 z-50 flex items-center gap-2 rounded-full px-5 py-3 font-medium text-sm shadow-lg transition-transform hover:scale-105"
-        style={{
-          background: "var(--accent)",
-          color: "var(--accent-foreground)",
-          boxShadow: "0 4px 20px rgba(74,144,217,0.4)",
-        }}
-      >
-        <MessageCircle size={18} />
-        Chat with my AI
-        <span
-          className="absolute -top-1.5 -left-1.5 rounded-full px-1.5 py-0.5 text-[10px] font-bold text-white animate-pulse"
-          style={{ background: "#22c55e" }}
-        >
-          NEW
-        </span>
-      </button>
+      <AnimatePresence>
+        {!isIdle && (
+          <button
+            key="chat-bubble"
+            onClick={() => setOpen(true)}
+            className="fixed bottom-8 left-6 z-50 flex items-center gap-2 rounded-full px-5 py-3 font-medium text-sm shadow-lg transition-transform hover:scale-105"
+            style={{
+              background: "var(--accent)",
+              color: "var(--accent-foreground)",
+              boxShadow: "0 4px 20px rgba(91,140,90,0.4)",
+            }}
+          >
+            <MessageCircle size={18} />
+            Chat with my AI
+            <span
+              className="absolute -top-1.5 -left-1.5 rounded-full px-1.5 py-0.5 text-[10px] font-bold text-white animate-pulse"
+              style={{ background: "#22c55e" }}
+            >
+              NEW
+            </span>
+          </button>
+        )}
+      </AnimatePresence>
 
       {open && (
-        // Wrapper: dims + centers on mobile (blocks page interaction).
-        // On desktop: transparent + pointer-events-none, so the portfolio
-        // behind it stays fully scrollable/clickable except over the panel itself.
         <div
           className="fixed inset-0 z-[100] flex items-center justify-center p-4 bg-black/60 pointer-events-auto md:bg-transparent md:pointer-events-none md:items-start md:justify-start md:p-3 md:pt-30"
           onClick={() => setOpen(false)}

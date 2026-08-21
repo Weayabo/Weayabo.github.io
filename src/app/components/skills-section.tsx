@@ -76,7 +76,7 @@ function SkillPill({ skill, delay }: { skill: Skill; delay: number }) {
       className={`inline-flex items-center px-4 py-1.5 rounded-full text-sm ${tierStyles[skill.tier]}`}
       style={
         skill.tier === "core"
-          ? { backgroundColor: "#4a90d9", borderColor: "#4a90d9" }
+          ? { backgroundColor: "#4f8a5f", borderColor: "#4f8a5f" }
           : undefined
       }
     >
@@ -137,7 +137,7 @@ export function SkillsSection() {
           <span className="flex items-center gap-2">
             <span
               className="w-3 h-3 rounded-full"
-              style={{ backgroundColor: "#4a90d9" }}
+              style={{ backgroundColor: "#4f8a5f" }}
             />
             Core 
           </span>
