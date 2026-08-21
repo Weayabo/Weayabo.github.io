@@ -108,11 +108,11 @@ export function Navigation() {
                     duration: 0.2,
                   }}
                 >
+                  <MoonPhase size={20} />
+
                   <span className="font-['Space_Grotesk'] text-2xl tracking-tight text-foreground">
                     REMUS
                   </span>
-
-                  <MoonPhase size={20} />
                 </motion.a>
 
                 {/* =====================================================

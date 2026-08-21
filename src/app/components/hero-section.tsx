@@ -310,8 +310,11 @@ export function HeroSection() {
 
           <motion.div
             initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.6, duration: 0.6 }}
+            animate={{
+              opacity: isIdle ? 0.08 : 1,
+              y: isIdle ? 6 : 0,
+              filter: isIdle ? "blur(5px)" : "blur(0px)",
+            }}
             className="mb-10 flex flex-row items-center lg:ml-auto justify-center gap-3 sm:gap-4"
           >
             <motion.a

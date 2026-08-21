@@ -327,7 +327,7 @@ export function AboutSection() {
             >
               <div className="mb-5 flex items-center justify-center gap-3 lg:justify-end">
                 <span className="text-[10px] font-medium tracking-[0.3em] text-[var(--green-accent)] uppercase font-['Cinzel']">
-                  The Rider
+                  The Traveler
                 </span>
 
                 <span className="h-px w-10 bg-[var(--green-accent)]/40" />

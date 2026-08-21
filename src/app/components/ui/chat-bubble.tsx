@@ -36,55 +36,58 @@ export function ChatBubble() {
               ease: [0.16, 1, 0.3, 1],
             }}
             className="
-              fixed
-              bottom-8
-              left-6
-              z-50
+        fixed
+        bottom-6
+        left-4
+        right-4
+        z-50
 
-              w-72
-              sm:w-80
+        w-auto
 
-              cursor-text
+        sm:left-6
+        sm:right-auto
+        sm:w-80
+        sm:bottom-8
 
-              border
-              border-[var(--green-accent)]/30
+        cursor-text
 
-              bg-black/70
-              backdrop-blur-md
+        border
+        border-[var(--green-accent)]/30
 
-              px-4
-              py-3
+        bg-black/70
+        backdrop-blur-md
 
-              text-left
-              text-sm
-              text-foreground/50
+        px-4
+        py-3
 
-              shadow-[0_8px_30px_rgba(0,0,0,0.35)]
+        text-left
+        text-sm
+        text-foreground/50
 
-              transition-all
-              duration-200
+        shadow-[0_8px_30px_rgba(0,0,0,0.35)]
 
-              hover:border-[var(--green-accent)]/60
-              hover:bg-black/80
-              hover:text-foreground/80
+        transition-all
+        duration-200
 
-              rounded-sm
-            "
+        hover:border-[var(--green-accent)]/60
+        hover:bg-black/80
+        hover:text-foreground/80
+
+        rounded-sm
+      "
           >
             <span>Chat with me</span>
 
-            {/* Optional subtle typing cursor */}
-
             <span
               className="
-                ml-1
-                inline-block
-                h-3
-                w-px
-                animate-pulse
-                bg-[var(--green-accent)]
-                align-middle
-              "
+          ml-1
+          inline-block
+          h-3
+          w-px
+          animate-pulse
+          bg-[var(--green-accent)]
+          align-middle
+        "
             />
           </motion.button>
         )}
