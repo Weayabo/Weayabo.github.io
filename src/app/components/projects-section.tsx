@@ -68,11 +68,11 @@ const projects: Project[] = [
   {
     title: "Trends and Spots",
     description:
-      "A web portal showcasing places, events, and people's experiences, helping users discover different destinations, cultures, and communities.",
+      "Trends and Spots is the first and only independent, non-corporate sustainability and ESG magazine based in Central Luzon, Philippines.",
     image: trendandspot,
-    tech: ["WordPress", "PHP"],
+    tech: ["WordPress", "Avada", "PHP"],
     category: "Web Portal",
-    terrain: "Travel · Community",
+    terrain: "ESG · Sustainability · Magazine",
     liveUrl: "https://www.trendsandspots.com/home/",
   },
 ];
