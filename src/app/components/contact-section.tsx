@@ -34,8 +34,8 @@ const contactRoutes: ContactRoute[] = [
   },
   {
     label: "LinkedIn",
-    value: "Remus Zamora",
-    href: "https://www.linkedin.com/in/remus-zamora-507768374/",
+    value: "Remus Kinilitan",
+    href: "https://www.linkedin.com/in/remus-kinilitan-507768374/",
     icon: Linkedin,
   },
   {

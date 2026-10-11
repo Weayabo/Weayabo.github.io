@@ -154,10 +154,7 @@ export function Footer() {
             <span className="h-px w-12 bg-[var(--green-accent)]/25" />
 
             <span className="flex items-center gap-2 text-[9px] font-medium uppercase tracking-[0.3em] text-[var(--green-accent)]">
-              <Compass
-                size={12}
-                strokeWidth={1.3}
-              />
+              <Compass size={12} strokeWidth={1.3} />
               End of the trail
             </span>
 
@@ -199,10 +196,7 @@ export function Footer() {
               duration: 0.6,
             }}
           >
-            <a
-              href="#home"
-              className="group inline-flex items-center gap-3"
-            >
+            <a href="#home" className="group inline-flex items-center gap-3">
               <span className="flex h-9 w-9 items-center justify-center rounded-full border border-[var(--green-accent)]/25 transition-colors duration-300 group-hover:border-[var(--green-accent)]/50">
                 <span className="h-2 w-2 rounded-full bg-[var(--green-accent)]" />
               </span>
@@ -326,7 +320,7 @@ export function Footer() {
             }}
             className="text-[9px] uppercase tracking-[0.18em] text-foreground/20"
           >
-            © {currentYear} Remus Zamora
+            © {currentYear} Remus Kinilitan. All rights reserved.
           </motion.p>
 
           <motion.div
@@ -379,7 +373,6 @@ export function Footer() {
               strokeWidth={1.5}
               className="transition-transform duration-300 group-hover:-translate-y-0.5"
             />
-
             Return to beginning
           </motion.button>
         </div>
